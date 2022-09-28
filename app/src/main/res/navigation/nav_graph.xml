@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.membersofparliamentproject.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/fragmentParties"
+        android:name="com.example.membersofparliamentproject.fragmentParties"
+        android:label="fragment_parties"
+        tools:layout="@layout/fragment_parties" >
+        <action
+            android:id="@+id/action_fragmentParties_to_fragmentMembers"
+            app:destination="@id/fragmentMembers" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMembers"
+        android:name="com.example.membersofparliamentproject.fragmentMembers"
+        android:label="fragment_members"
+        tools:layout="@layout/fragment_members" >
+        <action
+            android:id="@+id/action_fragmentMembers_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="com.example.membersofparliamentproject.FragmentDetail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>
