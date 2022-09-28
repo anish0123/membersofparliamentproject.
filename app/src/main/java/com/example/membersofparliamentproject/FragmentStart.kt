@@ -19,7 +19,7 @@ class FragmentStart : Fragment() {
         val view = inflater.inflate(R.layout.fragment_start, container, false)
         val button = view.findViewById<Button>(R.id.startBtn)
         button.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentStart_to_fragmentParties)
+            findNavController().navigate(R.id.action_fragmentStart3_to_fragmentParties2)
         }
         return view
     }

@@ -3,20 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentStart">
+    app:startDestination="@id/fragmentStart3">
 
-    <fragment
-        android:id="@+id/fragmentParties"
-        android:name="com.example.membersofparliamentproject.fragmentParties"
-        android:label="fragment_parties"
-        tools:layout="@layout/fragment_parties" >
-        <action
-            android:id="@+id/action_fragmentParties_to_fragmentMembers"
-            app:destination="@id/fragmentMembers" />
-        <action
-            android:id="@+id/action_fragmentParties_to_fragmentStart"
-            app:destination="@id/fragmentStart" />
-    </fragment>
     <fragment
         android:id="@+id/fragmentMembers"
         android:name="com.example.membersofparliamentproject.fragmentMembers"
@@ -25,25 +13,30 @@
         <action
             android:id="@+id/action_fragmentMembers_to_fragmentDetail"
             app:destination="@id/fragmentDetail" />
-        <action
-            android:id="@+id/action_fragmentMembers_to_fragmentParties"
-            app:destination="@id/fragmentParties" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetail"
         android:name="com.example.membersofparliamentproject.FragmentDetail"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/fragmentParties2"
+        android:name="com.example.membersofparliamentproject.FragmentParties"
+        android:label="fragment_parties"
+        tools:layout="@layout/fragment_parties" >
         <action
-            android:id="@+id/action_fragmentDetail_to_fragmentMembers"
+            android:id="@+id/action_fragmentParties2_to_fragmentMembers"
             app:destination="@id/fragmentMembers" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentStart"
+        android:id="@+id/fragmentStart3"
         android:name="com.example.membersofparliamentproject.FragmentStart"
-        android:label="fragmentStart" >
+        android:label="FragmentStart" >
         <action
-            android:id="@+id/action_fragmentStart_to_fragmentParties"
-            app:destination="@id/fragmentParties" />
+            android:id="@+id/action_fragmentStart3_to_fragmentParties2"
+            app:destination="@id/fragmentParties2" />
+        <action
+            android:id="@+id/action_fragmentStart3_to_fragmentMembers"
+            app:destination="@id/fragmentMembers" />
     </fragment>
 </navigation>
