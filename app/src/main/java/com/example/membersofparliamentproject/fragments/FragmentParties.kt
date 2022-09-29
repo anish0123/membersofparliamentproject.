@@ -1,17 +1,16 @@
-package com.example.membersofparliamentproject
+package com.example.membersofparliamentproject.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.membersofparliamentproject.database.ParliamentMembers
-import com.example.membersofparliamentproject.database.ParliamentMembersViewModel
+import com.example.membersofparliamentproject.PartiesAdapter
+import com.example.membersofparliamentproject.R
+import com.example.membersofparliamentproject.viewModels.ParliamentMembersViewModel
 import parliamentexercise.Parliament
 import parliamentexercise.ParliamentMembersData
 
@@ -38,7 +37,7 @@ class FragmentParties : Fragment() {
         recyclerView.setHasFixedSize(true)
         adapter = PartiesAdapter(parties)
         recyclerView.adapter = adapter
-        adapter.setonItemClickListener(object: PartiesAdapter.OnItemClickListener{
+        adapter.setonItemClickListener(object: PartiesAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 findNavController().navigate(R.id.action_fragmentParties2_to_fragmentMembers2)
             }

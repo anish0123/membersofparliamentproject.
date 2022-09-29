@@ -1,4 +1,4 @@
-package com.example.membersofparliamentproject
+package com.example.membersofparliamentproject.viewModels
 
 import android.content.ContentValues
 import android.content.ContentValues.TAG
@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.membersofparliamentproject.database.ParliamentMembers
-import com.example.membersofparliamentproject.database.ParliamentMembersViewModel
 import com.example.membersofparliamentproject.network.ParliamentMemberApi
 import kotlinx.coroutines.launch
 

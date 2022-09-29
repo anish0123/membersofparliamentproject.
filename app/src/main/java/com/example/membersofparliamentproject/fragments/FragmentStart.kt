@@ -1,4 +1,4 @@
-package com.example.membersofparliamentproject
+package com.example.membersofparliamentproject.fragments
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
-import com.example.membersofparliamentproject.database.ParliamentMembersViewModel
+import com.example.membersofparliamentproject.viewModels.ParliamentMembersViewModel
+import com.example.membersofparliamentproject.viewModels.FragmentStartViewModel
 
 //
 class FragmentStart : Fragment() {

@@ -1,9 +1,12 @@
-package com.example.membersofparliamentproject.database
+package com.example.membersofparliamentproject.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.membersofparliamentproject.database.AppDataBase
+import com.example.membersofparliamentproject.database.ParliamentMemberRepository
+import com.example.membersofparliamentproject.database.ParliamentMembers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

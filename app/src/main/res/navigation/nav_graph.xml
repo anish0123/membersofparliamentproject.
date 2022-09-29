@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/fragmentDetail"
-        android:name="com.example.membersofparliamentproject.FragmentDetail"
+        android:name="com.example.membersofparliamentproject.fragments.FragmentDetail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/fragmentParties2"
-        android:name="com.example.membersofparliamentproject.FragmentParties"
+        android:name="com.example.membersofparliamentproject.fragments.FragmentParties"
         android:label="fragment_parties"
         tools:layout="@layout/fragment_parties" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentStart3"
-        android:name="com.example.membersofparliamentproject.FragmentStart"
+        android:name="com.example.membersofparliamentproject.fragments.FragmentStart"
         android:label="FragmentStart" >
         <action
             android:id="@+id/action_fragmentStart3_to_fragmentParties2"
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentMembers"
-        android:name="com.example.membersofparliamentproject.FragmentMembers"
+        android:name="com.example.membersofparliamentproject.fragments.FragmentMembers"
         android:label="fragment_members"
         tools:layout="@layout/fragment_members" >
         <action
