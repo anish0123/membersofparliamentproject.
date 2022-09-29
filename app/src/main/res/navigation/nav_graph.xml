@@ -6,15 +6,6 @@
     app:startDestination="@id/fragmentStart3">
 
     <fragment
-        android:id="@+id/fragmentMembers"
-        android:name="com.example.membersofparliamentproject.fragmentMembers"
-        android:label="fragment_members"
-        tools:layout="@layout/fragment_members" >
-        <action
-            android:id="@+id/action_fragmentMembers_to_fragmentDetail"
-            app:destination="@id/fragmentDetail" />
-    </fragment>
-    <fragment
         android:id="@+id/fragmentDetail"
         android:name="com.example.membersofparliamentproject.FragmentDetail"
         android:label="fragment_detail"
@@ -25,7 +16,7 @@
         android:label="fragment_parties"
         tools:layout="@layout/fragment_parties" >
         <action
-            android:id="@+id/action_fragmentParties2_to_fragmentMembers"
+            android:id="@+id/action_fragmentParties2_to_fragmentMembers2"
             app:destination="@id/fragmentMembers" />
     </fragment>
     <fragment
@@ -35,8 +26,14 @@
         <action
             android:id="@+id/action_fragmentStart3_to_fragmentParties2"
             app:destination="@id/fragmentParties2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMembers"
+        android:name="com.example.membersofparliamentproject.FragmentMembers"
+        android:label="fragment_members"
+        tools:layout="@layout/fragment_members" >
         <action
-            android:id="@+id/action_fragmentStart3_to_fragmentMembers"
-            app:destination="@id/fragmentMembers" />
+            android:id="@+id/action_fragmentMembers_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
     </fragment>
 </navigation>
