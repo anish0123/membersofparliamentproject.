@@ -9,5 +9,6 @@ class ParliamentMemberRepository(private val parliamentMembersDao: ParliamentMem
     suspend fun addMember(member: ParliamentMembers) {
         parliamentMembersDao.addMember(member)
     }
-
+    // This is to call method from Dao to add all members
+    suspend fun addAllMembers(memberList: List<ParliamentMembers>) = parliamentMembersDao.addAllMembers(memberList)
 }

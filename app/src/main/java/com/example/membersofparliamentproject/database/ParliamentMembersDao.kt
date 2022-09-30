@@ -10,7 +10,11 @@ import androidx.room.Query
 interface ParliamentMembersDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addMember(member: ParliamentMembers)
+    suspend fun addMember(member: ParliamentMembers)
+
+    //This method is to insert all members from network to the database
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addAllMembers(memberList:List<ParliamentMembers>)
 
     @Query("SELECT * FROM ParliamentMembers_table ORDER BY HetekaId ASC")
     fun readAllData(): LiveData<List<ParliamentMembers>>
