@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.membersofparliamentproject.MembersAdapter
 import com.example.membersofparliamentproject.R
-import parliamentexercise.Parliament
-import parliamentexercise.ParliamentMembersData
+
 
 /**
  * This Fragment is used to display list of party members in a recyclerView.
@@ -21,7 +20,7 @@ class FragmentMembers : Fragment() {
     private lateinit var clickedParty : String
     private lateinit var adapter: MembersAdapter
     private lateinit var recyclerView: RecyclerView
-    private var partyMembers = Parliament(ParliamentMembersData.members).partyMembers(clickedParty)
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +35,7 @@ class FragmentMembers : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewMembers)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter = MembersAdapter(partyMembers)
+        //adapter = MembersAdapter(partyMembers)
         recyclerView.adapter = adapter
         adapter.setonItemClickListener(object: MembersAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {

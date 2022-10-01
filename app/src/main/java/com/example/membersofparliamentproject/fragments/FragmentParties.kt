@@ -17,8 +17,7 @@ import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewMode
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModelFactory
 import com.example.membersofparliamentproject.viewModels.FragmentStartViewModelFactory
 import com.example.membersofparliamentproject.viewModels.ParliamentMembersViewModel
-import parliamentexercise.Parliament
-import parliamentexercise.ParliamentMembersData
+
 
 /**
  * This is Party Fragment which displays party lists on recyclerView
