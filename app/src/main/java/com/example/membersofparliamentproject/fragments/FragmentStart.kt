@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
+import com.example.membersofparliamentproject.databinding.FragmentStartBinding
 import com.example.membersofparliamentproject.viewModels.ParliamentMembersViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentStartViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentStartViewModelFactory
@@ -23,22 +24,22 @@ import com.example.membersofparliamentproject.viewModels.FragmentStartViewModelF
 class FragmentStart : Fragment() {
     // - Comments: You should have 1 viewmodel per fragment only.
     private lateinit var viewModel: FragmentStartViewModel
+    private var _binding: FragmentStartBinding? = null
+    private val binding get() =_binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_start, container, false)
+        _binding = FragmentStartBinding.inflate(inflater,container,false)
+        val view = binding.root
 
         // Initialise FragmentStartViewModel
         viewModel = ViewModelProvider(this, FragmentStartViewModelFactory(requireActivity().application))[FragmentStartViewModel::class.java]
-
+        //Get the data from the URI and save it into database
         viewModel.getMembers()
         viewModel.saveDataToDatabase()
-
-//        Log.d(ContentValues.TAG, "is it working $viewModel.getMembers().toString()")
-        val button = view.findViewById<Button>(R.id.startBtn)
-
-        button.setOnClickListener {
+        //Using start button to move to fragement where it displays party List
+        binding.startBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentStart3_to_fragmentParties2)
         }
         return view

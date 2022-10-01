@@ -18,4 +18,7 @@ interface ParliamentMembersDao {
 
     @Query("SELECT * FROM ParliamentMembers_table ORDER BY HetekaId ASC")
     fun readAllData(): LiveData<List<ParliamentMembers>>
+
+    @Query("SELECT party FROM ParliamentMembers_table ")
+    fun getMemberParty(): LiveData<List<String>>
 }

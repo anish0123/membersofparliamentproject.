@@ -12,6 +12,10 @@ import com.example.membersofparliamentproject.R
 import parliamentexercise.Parliament
 import parliamentexercise.ParliamentMembersData
 
+/**
+ * This Fragment is used to display list of party members in a recyclerView.
+ *
+ */
 
 class FragmentMembers : Fragment() {
     private lateinit var clickedParty : String

@@ -26,7 +26,6 @@ class PartiesAdapter(private val partiesList : List<String>) :
         val itemView =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_view, parent, false)
-        Log.d(TAG, "working here")
         return PartiesViewHolder(itemView, myListener)
     }
 

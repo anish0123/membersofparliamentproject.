@@ -9,6 +9,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
 
+/**
+ * Object used to get the JSON data from the URI
+ */
 private const val BASE_URL =
     "https://users.metropolia.fi/~peterh/"
 
