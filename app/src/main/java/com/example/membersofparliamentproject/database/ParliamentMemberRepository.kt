@@ -2,7 +2,7 @@ package com.example.membersofparliamentproject.database
 
 import androidx.lifecycle.LiveData
 
-class ParliamentMemberRepository(private val parliamentMembersDao: ParliamentMembersDao) {
+class ParliamentMemberRepository(private val parliamentMembersDao: ParliamentMembersDao, private val parliamentMembersExtraDao: ParliamentMembersExtraDao) {
 
     val readAllData: LiveData<List<ParliamentMembers>> = parliamentMembersDao.readAllData()
 
@@ -13,4 +13,6 @@ class ParliamentMemberRepository(private val parliamentMembersDao: ParliamentMem
     suspend fun addAllMembers(memberList: List<ParliamentMembers>) = parliamentMembersDao.addAllMembers(memberList)
 
     fun getMemberParty(): LiveData<List<String>> = parliamentMembersDao.getMemberParty()
+
+    suspend fun addAllExtras(extraList: List<ParliamentMembersExtra>) = parliamentMembersExtraDao.addAllExtra(extraList)
 }

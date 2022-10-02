@@ -38,6 +38,8 @@ class FragmentStart : Fragment() {
         //Get the data from the URI and save it into database
         viewModel.getMembers()
         viewModel.saveDataToDatabase()
+        viewModel.getExtras()
+        viewModel.saveExtraToDatabase()
         //Using start button to move to fragement where it displays party List
         binding.startBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentStart3_to_fragmentParties2)

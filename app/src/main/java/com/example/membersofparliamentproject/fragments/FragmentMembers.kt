@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.membersofparliamentproject.MembersAdapter
 import com.example.membersofparliamentproject.R
+<<<<<<< HEAD
 
+=======
+>>>>>>> bd17234 (fixing while pushing the code to gitlab)
 
 /**
  * This Fragment is used to display list of party members in a recyclerView.

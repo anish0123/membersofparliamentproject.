@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import parliamentexercise.ParliamentMember
+import com.example.membersofparliamentproject.database.ParliamentMembers
 
-class MembersAdapter (private val partyMembers: List<ParliamentMember>) :
+
+class MembersAdapter (private val partyMembers: List<ParliamentMembers>) :
     RecyclerView.Adapter<MemberViewHolder>() {
     private lateinit var myListener: OnItemClickListener
 

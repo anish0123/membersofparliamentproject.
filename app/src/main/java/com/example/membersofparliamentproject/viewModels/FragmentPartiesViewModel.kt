@@ -10,7 +10,7 @@ import com.example.membersofparliamentproject.fragments.FragmentParties
 
 class FragmentPartiesViewModel(application: Application): AndroidViewModel(application) {
 
-    private val parliamentMemberRepository = ParliamentMemberRepository(AppDataBase.getDatabase(application).parliamentMembersDao())
+    private val parliamentMemberRepository = ParliamentMemberRepository(AppDataBase.getDatabase(application).parliamentMembersDao(),AppDataBase.getDatabase(application).parliamentMembersExtraDao())
     val listedParties = parliamentMemberRepository.getMemberParty()
 
 

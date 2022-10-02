@@ -5,10 +5,9 @@ import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.membersofparliamentproject.database.AppDataBase
-import com.example.membersofparliamentproject.database.ParliamentMemberRepository
-import com.example.membersofparliamentproject.database.ParliamentMembers
+import com.example.membersofparliamentproject.database.*
 import com.example.membersofparliamentproject.network.ParliamentMemberApi
+import com.example.membersofparliamentproject.network.ParliamentMemberExtraApi
 import kotlinx.coroutines.launch
 
 /**
@@ -19,8 +18,11 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
     private val _listedMembers = MutableLiveData<List<ParliamentMembers>>()
     val listMembers: LiveData<List<ParliamentMembers>> = _listedMembers
 
+    private val _listedExtras = MutableLiveData<List<ParliamentMembersExtra>>()
+    val listedExtras: LiveData<List<ParliamentMembersExtra>> = _listedExtras
+
     // Initialise repository
-    private val parliamentMemberRepository = ParliamentMemberRepository(AppDataBase.getDatabase(application).parliamentMembersDao())
+    private val parliamentMemberRepository = ParliamentMemberRepository(AppDataBase.getDatabase(application).parliamentMembersDao(),AppDataBase.getDatabase(application).parliamentMembersExtraDao())
 
     //Fetching the data from network
     fun getMembers() {
@@ -41,6 +43,28 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
         if (obtainedList != null) {
             viewModelScope.launch {
                 parliamentMemberRepository.addAllMembers(obtainedList)
+            }
+        }
+
+    }
+
+    fun getExtras() {
+        viewModelScope.launch {
+            try {
+                _listedExtras.value = ParliamentMemberExtraApi.retrofitService.getParliamentMembersExtra()
+                Log.d("NETWORK", "Fetching successfully")
+            } catch (e: java.lang.Exception) {
+                Log.d("NETWORK", "no luck in getting members: $e")
+            }
+        }
+    }
+
+    fun saveExtraToDatabase() {
+        val obtainedExtraList: List<ParliamentMembersExtra>? = _listedExtras.value
+        if(obtainedExtraList != null) {
+            viewModelScope.launch {
+                parliamentMemberRepository.addAllExtras(obtainedExtraList)
+                Log.d("EXTRALIST", "extralist obtained")
             }
         }
 

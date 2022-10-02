@@ -10,10 +10,9 @@ import androidx.room.PrimaryKey
     onDelete = ForeignKey.CASCADE)]
 )
 data class ParliamentMembersExtra(
-    @PrimaryKey(autoGenerate = true)
-    val extraId: Int,
-    val hetekaId: Int,
-    val twitter: String,
+    @PrimaryKey(autoGenerate = false)
+    val constituency: String,
     val bornYear: Int,
-    val constituency: String
+    val hetekaId: Int,
+    val twitter: String
 )

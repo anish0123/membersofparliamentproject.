@@ -5,10 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [ParliamentMembers::class], version = 1, exportSchema = false)
+@Database(entities = [ParliamentMembers::class,ParliamentMembersExtra::class], version = 1, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun parliamentMembersDao(): ParliamentMembersDao
+    abstract fun parliamentMembersExtraDao(): ParliamentMembersExtraDao
 
     companion object {
 
