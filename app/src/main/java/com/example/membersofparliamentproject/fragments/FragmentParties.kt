@@ -17,10 +17,6 @@ import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewMode
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModelFactory
 import com.example.membersofparliamentproject.viewModels.FragmentStartViewModelFactory
 import com.example.membersofparliamentproject.viewModels.ParliamentMembersViewModel
-<<<<<<< HEAD
-
-=======
->>>>>>> bd17234 (fixing while pushing the code to gitlab)
 
 /**
  * This is Party Fragment which displays party lists on recyclerView
