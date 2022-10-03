@@ -22,12 +22,14 @@ import kotlinx.android.synthetic.main.fragment_detail.view.*
 import java.time.LocalDate
 import kotlin.properties.Delegates
 
+/**
+ * This fragment is used to display the details of parliament members
+ */
 
 class FragmentDetail : Fragment() {
     private val args by navArgs<FragmentDetailArgs>()
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
-    private var clickedMemberHetekaId = 111
     private lateinit var viewModel: FragmentDetailViewModel
 
 
@@ -38,12 +40,14 @@ class FragmentDetail : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
 
+        //Displaying member details in textViews
         binding.party.text = getString(R.string.partyDisplay,args.clickedMember.party)
         binding.name.text = getString(R.string.name,args.clickedMember.firstname,args.clickedMember.lastname)
         binding.hetekaId.text = getString(R.string.HetekaId,args.clickedMember.hetekaId)
         binding.seatNumber.text = getString(R.string.seatNumber,args.clickedMember.seatNumber)
         binding.minister.text = getString(R.string.minister,args.clickedMember.minister)
         val url = getString(R.string.url,args.clickedMember.pictureUrl)
+        //Introducing glide for getting members pictures for imageView
         Glide.with(this).load(url).into(binding.mpImage)
 
         val view = binding.root
@@ -53,12 +57,12 @@ class FragmentDetail : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Initialising ViewModel
         viewModel = ViewModelProvider(
             this,
             FragmentDetailViewModelFactory(requireActivity().application)
         )[FragmentDetailViewModel::class.java]
-        //viewModel.getMemberByHetekaId(clickedMemberHetekaId)
-        Log.d("GetMember",viewModel.getMemberByHetekaId(clickedMemberHetekaId).toString() )
+
 
     }
 

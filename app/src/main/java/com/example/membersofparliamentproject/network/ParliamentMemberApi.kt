@@ -15,19 +15,23 @@ import retrofit2.http.GET
 private const val BASE_URL =
     "https://users.metropolia.fi/~peterh/"
 
+//Introducing moshi
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
+//Introducing retrofit
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
+//Introducing interface for getting JSON data
 interface ParliamentMemberApiService {
     @GET("seating.json")
     suspend fun getParliamentMembersList(): List<ParliamentMembers>
 }
+//Starting the connection to get the data
 object ParliamentMemberApi {
     val retrofitService: ParliamentMemberApiService by lazy {
         retrofit.create(ParliamentMemberApiService::class.java)

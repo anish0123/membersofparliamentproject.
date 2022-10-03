@@ -4,6 +4,10 @@ import android.os.Parcelable
 import android.view.ViewDebug.CapturedViewProperty
 import androidx.room.*
 import kotlinx.android.parcel.Parcelize
+
+/**
+ * This is a data class that holds details of parliament members
+ */
 @Parcelize
 @Entity(tableName = "ParliamentMembers_table")
 data class ParliamentMembers(

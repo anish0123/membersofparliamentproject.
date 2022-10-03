@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.membersofparliamentproject.PartiesAdapter
 import com.example.membersofparliamentproject.R
-import com.example.membersofparliamentproject.communicator.Communicator
 import com.example.membersofparliamentproject.databinding.FragmentPartiesBinding
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModelFactory
@@ -47,12 +46,13 @@ class FragmentParties : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)
 
-        //Initialising recyclerView and its adapter
+        //Initialising recyclerView, its adapter and viewModel
         binding.recyclerViewParty.layoutManager = layoutManager
         binding.recyclerViewParty.setHasFixedSize(true)
         viewModel = ViewModelProvider(this,
             FragmentPartiesViewModelFactory(requireActivity().application)
         )[FragmentPartiesViewModel::class.java]
+        viewModel.getMemberParty()
         //Starting the observer for livedata which is list of parties.
         val partiesObserver = Observer<List<String>> {parties ->
             adapter = PartiesAdapter(parties.distinct().sorted())
@@ -70,6 +70,7 @@ class FragmentParties : Fragment() {
         }
         //Observer start.
         viewModel.listedParties.observe(viewLifecycleOwner, partiesObserver)
+
 
     }
 }

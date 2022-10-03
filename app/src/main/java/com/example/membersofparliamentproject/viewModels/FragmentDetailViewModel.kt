@@ -7,6 +7,9 @@ import com.example.membersofparliamentproject.database.ParliamentMemberRepositor
 import com.example.membersofparliamentproject.database.ParliamentMembers
 import kotlinx.coroutines.launch
 
+/**
+ * This is the viewModel for fragmentDetail.
+ */
 class FragmentDetailViewModel(application: Application):AndroidViewModel(application) {
 
     //Initialising repository.
@@ -14,16 +17,14 @@ class FragmentDetailViewModel(application: Application):AndroidViewModel(applica
         AppDataBase.getDatabase(application).parliamentMembersDao(),
         AppDataBase.getDatabase(application).parliamentMembersExtraDao())
 
+    //Introducing live data object
     private var _clickedMember = MutableLiveData<ParliamentMembers>()
     val clickedMember : LiveData<ParliamentMembers> = _clickedMember
 
-    fun getMemberByHetekaId(hetekaId: Int) {
-        viewModelScope.launch {
-            _clickedMember.value = parliamentMemberRepository.getMemberByHetekaId(hetekaId)
-        }
-    }
+
 }
 
+//Creating a view model factory for fragmentDetail viewModel
 class FragmentDetailViewModelFactory(val app:Application): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if(modelClass.isAssignableFrom(FragmentDetailViewModel::class.java)) {

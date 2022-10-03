@@ -5,6 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/**
+ * This is the database class.
+ */
+
 @Database(entities = [ParliamentMembers::class,ParliamentMembersExtra::class], version = 1, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
 
@@ -13,6 +17,7 @@ abstract class AppDataBase : RoomDatabase() {
 
     companion object {
 
+        //Creating an instance of the database
         @Volatile
         private var INSTANCE : AppDataBase? = null
 

@@ -5,12 +5,11 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.membersofparliamentproject.communicator.Communicator
 import com.example.membersofparliamentproject.database.ParliamentMembers
 import com.example.membersofparliamentproject.fragments.FragmentMembers
 import com.example.membersofparliamentproject.fragments.FragmentParties
 
-class MainActivity : AppCompatActivity(),Communicator {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,13 +25,6 @@ class MainActivity : AppCompatActivity(),Communicator {
 
     }
 
-    override fun passParty(clickedParty: String) {
-        val bundle = Bundle()
-        bundle.putString("party", clickedParty)
 
-        val fragmentMembers = FragmentMembers()
-        fragmentMembers.arguments = bundle
-
-    }
 }
 

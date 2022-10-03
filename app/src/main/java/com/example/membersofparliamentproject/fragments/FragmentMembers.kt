@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.membersofparliamentproject.MembersAdapter
 import com.example.membersofparliamentproject.PartiesAdapter
 import com.example.membersofparliamentproject.R
-import com.example.membersofparliamentproject.communicator.Communicator
 import com.example.membersofparliamentproject.database.ParliamentMembers
 import com.example.membersofparliamentproject.databinding.FragmentMembersBinding
 import com.example.membersofparliamentproject.viewModels.FragmentMembersViewModel
@@ -46,16 +45,6 @@ class FragmentMembers : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentMembersBinding.inflate(inflater, container, false)
-        //bundle for getting party name from fragment Parties.
-        setFragmentResultListener("requestKey") { requestKey, bundle ->
-            // We use a String here, but any type that can be put in a Bundle is supported
-            val result = bundle.getString("bundleKey")
-            if (result != null) {
-                Log.d("CLicked Party2", result)
-                clickedParty = result
-            }
-            viewModel.getMembersByParty(clickedParty)
-        }
 
         val view = binding.root
         return view
@@ -71,7 +60,18 @@ class FragmentMembers : Fragment() {
             this,
             FragmentMembersViewModelFactory(requireActivity().application)
         )[FragmentMembersViewModel::class.java]
-        Log.d("ClickedPartyMembers", viewModel.getMembersByParty(clickedParty).toString())
+        //bundle for getting party name from fragment Parties.
+        setFragmentResultListener("requestKey") { requestKey, bundle ->
+            // We use a String here, but any type that can be put in a Bundle is supported
+            val result = bundle.getString("bundleKey")
+            if (result != null) {
+                Log.d("CLicked Party2", result)
+                clickedParty = result
+            }
+            //Calling function to get members of selectedParty
+            //TODO("Need a way to get members of selected party, this function is using too much of main thread.")
+            viewModel.getMembersByParty(clickedParty)
+        }
 
         //Starting the observer for livedata which is list of parties.
         val clickedPartyObserver = Observer<List<ParliamentMembers>> { partyMembers ->

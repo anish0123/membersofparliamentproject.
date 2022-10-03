@@ -9,6 +9,9 @@ import com.example.membersofparliamentproject.fragments.FragmentMembers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+/**
+ * This is a viewModel for fragmentMembers
+ */
 class FragmentMembersViewModel(application: Application): AndroidViewModel(application) {
 
     //Initialising repository.
