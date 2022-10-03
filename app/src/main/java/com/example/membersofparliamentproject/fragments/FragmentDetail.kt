@@ -57,20 +57,6 @@ class FragmentDetail : Fragment() {
         //viewModel.getMemberByHetekaId(clickedMemberHetekaId)
         Log.d("GetMember",viewModel.getMemberByHetekaId(clickedMemberHetekaId).toString() )
 
-        /*
-        val clickedMemberObserver = Observer<ParliamentMembers> {member ->
-            Log.d("Observer Member", member.toString())
-           // binding.hetekaId.text = "working"
-            //binding.party.text =member.party
-            //binding.seatNumber.text = member.seatNumber.toString()
-
-        }
-
-
-        viewModel.clickedMember.observe(viewLifecycleOwner,clickedMemberObserver)
-
-
-         */
     }
 
 
