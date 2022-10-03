@@ -38,6 +38,7 @@ class FragmentStart : Fragment() {
         //Get the data from the URI and save it into database
         viewModel.getMembers()
         viewModel.saveDataToDatabase()
+        // Get the extra details from the URI and save it into database.
         viewModel.getExtras()
         viewModel.saveExtraToDatabase()
         //Using start button to move to fragement where it displays party List

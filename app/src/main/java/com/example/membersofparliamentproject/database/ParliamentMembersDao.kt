@@ -21,4 +21,7 @@ interface ParliamentMembersDao {
 
     @Query("SELECT party FROM ParliamentMembers_table ")
     fun getMemberParty(): LiveData<List<String>>
+
+    @Query("SELECT * FROM ParliamentMembers_table WHERE party LIKE :party")
+    fun getMembersByParty(party: String): List<ParliamentMembers>
 }

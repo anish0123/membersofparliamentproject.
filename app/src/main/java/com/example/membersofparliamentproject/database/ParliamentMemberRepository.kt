@@ -1,6 +1,7 @@
 package com.example.membersofparliamentproject.database
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 class ParliamentMemberRepository(private val parliamentMembersDao: ParliamentMembersDao, private val parliamentMembersExtraDao: ParliamentMembersExtraDao) {
 
@@ -15,4 +16,6 @@ class ParliamentMemberRepository(private val parliamentMembersDao: ParliamentMem
     fun getMemberParty(): LiveData<List<String>> = parliamentMembersDao.getMemberParty()
 
     suspend fun addAllExtras(extraList: List<ParliamentMembersExtra>) = parliamentMembersExtraDao.addAllExtra(extraList)
+
+    fun getMembersByParty(party: String): List<ParliamentMembers> = parliamentMembersDao.getMembersByParty(party)
 }

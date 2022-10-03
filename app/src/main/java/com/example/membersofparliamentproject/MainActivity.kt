@@ -4,18 +4,34 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.membersofparliamentproject.communicator.Communicator
 import com.example.membersofparliamentproject.database.ParliamentMembers
+import com.example.membersofparliamentproject.fragments.FragmentMembers
+import com.example.membersofparliamentproject.fragments.FragmentParties
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),Communicator {
 
     private lateinit var navController: NavController
-    private lateinit var importedMembers: List<ParliamentMembers>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Introduced a supportFragment Manager and nav Controller
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
+        setupActionBarWithNavController(navController)
+
+
+
+    }
+
+    override fun passParty(clickedParty: String) {
+        val bundle = Bundle()
+        bundle.putString("party", clickedParty)
+
+        val fragmentMembers = FragmentMembers()
+        fragmentMembers.arguments = bundle
 
     }
 }

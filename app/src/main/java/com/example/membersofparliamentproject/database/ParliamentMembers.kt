@@ -7,7 +7,7 @@ import androidx.room.*
 data class ParliamentMembers(
     @PrimaryKey(autoGenerate = false)
     val hetekaId: Int,
-     val seatNumber: Int,
+    val seatNumber: Int,
      val lastname: String,
     val firstname: String,
     val party: String,
