@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
@@ -16,11 +17,13 @@ import com.example.membersofparliamentproject.databinding.FragmentDetailBinding
 import com.example.membersofparliamentproject.viewModels.FragmentDetailViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentDetailViewModelFactory
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModel
+import kotlinx.android.synthetic.main.fragment_detail.view.*
 import java.time.LocalDate
 import kotlin.properties.Delegates
 
 
 class FragmentDetail : Fragment() {
+    private val args by navArgs<FragmentDetailArgs>()
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private var clickedMemberHetekaId = 111
@@ -33,13 +36,12 @@ class FragmentDetail : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        setFragmentResultListener("requestKeyTwo") { requestKey, bundle ->
-            // We use a String here, but any type that can be put in a Bundle is supported
-            val memberResult = bundle.getInt("bundleKeyTwo")
-            clickedMemberHetekaId = memberResult
-            Log.d("ClickedMember33", clickedMemberHetekaId.toString())
-        }
 
+        binding.party.text = getString(R.string.partyDisplay,args.clickedMember.party)
+        binding.name.text = getString(R.string.name,args.clickedMember.firstname,args.clickedMember.lastname)
+        binding.hetekaId.text = getString(R.string.HetekaId,args.clickedMember.hetekaId)
+        binding.seatNumber.text = getString(R.string.seatNumber,args.clickedMember.seatNumber)
+        binding.minister.text = getString(R.string.minister,args.clickedMember.minister)
 
         val view = binding.root
         return view

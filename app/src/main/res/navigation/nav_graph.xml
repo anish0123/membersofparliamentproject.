@@ -9,7 +9,11 @@
         android:id="@+id/fragmentDetail"
         android:name="com.example.membersofparliamentproject.fragments.FragmentDetail"
         android:label="Parliament Members detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="clickedMember"
+            app:argType="com.example.membersofparliamentproject.database.ParliamentMembers" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentParties2"
         android:name="com.example.membersofparliamentproject.fragments.FragmentParties"

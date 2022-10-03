@@ -2,4 +2,9 @@
     <string name="app_name">MembersOfParliamentProject</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="partyDisplay">Party: %s</string>
+    <string name="name">Name: %1s %2s</string>
+    <string name="HetekaId">HetekaId: %d</string>
+    <string name="seatNumber">Seat Number: %d</string>
+    <string name="minister">Minister: %b</string>
 </resources>

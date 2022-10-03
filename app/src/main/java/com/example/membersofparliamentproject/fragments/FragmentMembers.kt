@@ -38,7 +38,6 @@ class FragmentMembers : Fragment() {
     private var _binding: FragmentMembersBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: FragmentMembersViewModel
-    private lateinit var communicator: Communicator
 
 
     override fun onCreateView(
@@ -81,10 +80,10 @@ class FragmentMembers : Fragment() {
             //Adding setOnClickListener so whenever the party is clicked it displays it's members in Fragment Members
             adapter.setonItemClickListener(object : MembersAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val memberResult = partyMembers[position].hetekaId
-                    setFragmentResult("requestKeyTwo", bundleOf("bundleKeyTwo" to memberResult))
-                    Log.d("ClickedMember1", memberResult.toString())
-                    findNavController().navigate(R.id.action_fragmentMembers_to_fragmentDetail)
+                    val memberResult = partyMembers[position]
+                    val action = FragmentMembersDirections.actionFragmentMembersToFragmentDetail(memberResult)
+                    findNavController().navigate(action)
+
                 }
 
 
