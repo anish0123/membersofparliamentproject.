@@ -1,6 +1,7 @@
 package com.example.membersofparliamentproject
 
 import android.content.ContentValues
+import android.content.res.Resources
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,9 @@ class MembersAdapter (private val partyMembers: List<ParliamentMembers>) :
 
     override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
         val currentMember = partyMembers[position]
-        holder.partyHeading.text = currentMember.toString()
+        val firstName = currentMember.firstname
+        val lastName = currentMember.lastname
+        ("$firstName $lastName").toString().also { holder.partyHeading.text = it }
     }
 
     override fun getItemCount(): Int {

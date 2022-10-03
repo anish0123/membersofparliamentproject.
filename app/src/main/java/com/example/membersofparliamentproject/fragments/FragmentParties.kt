@@ -49,7 +49,7 @@ class FragmentParties : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)
 
-        //Initalising recyclerView and its adapter
+        //Initialising recyclerView and its adapter
         binding.recyclerViewParty.layoutManager = layoutManager
         binding.recyclerViewParty.setHasFixedSize(true)
         viewModel = ViewModelProvider(this,

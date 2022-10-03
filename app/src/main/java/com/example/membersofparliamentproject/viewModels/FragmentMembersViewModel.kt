@@ -6,6 +6,7 @@ import com.example.membersofparliamentproject.database.AppDataBase
 import com.example.membersofparliamentproject.database.ParliamentMemberRepository
 import com.example.membersofparliamentproject.database.ParliamentMembers
 import com.example.membersofparliamentproject.fragments.FragmentMembers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class FragmentMembersViewModel(application: Application): AndroidViewModel(application) {

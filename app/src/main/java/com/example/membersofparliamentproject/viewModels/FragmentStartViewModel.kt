@@ -77,7 +77,7 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
  * This Factory class helps to initialize FragmentStartViewModel with application as
  * parameter (without it, you cannot have application context to create your AppDatabase)
  *
- * Teacher doesnot have this in exampledbrecycler because he makes his repository has singleton
+ * Teacher does not have this in exampledbrecycler because he makes his repository has singleton
  * without any parameters. In your project, as you makes your repository to accept
  * ParliamentMemberDao (this Dao needs the application context to create AppDatabase)
  *

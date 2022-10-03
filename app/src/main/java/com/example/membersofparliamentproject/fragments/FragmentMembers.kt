@@ -58,8 +58,6 @@ class FragmentMembers : Fragment() {
             viewModel.getMembersByParty(clickedParty)
         }
 
-
-
         val view = binding.root
         return view
     }
