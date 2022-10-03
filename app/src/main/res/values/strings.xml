@@ -7,4 +7,5 @@
     <string name="HetekaId">HetekaId: %d</string>
     <string name="seatNumber">Seat Number: %d</string>
     <string name="minister">Minister: %b</string>
+    <string name="url">https://avoindata.eduskunta.fi/%s</string>
 </resources>

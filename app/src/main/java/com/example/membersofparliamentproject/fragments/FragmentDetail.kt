@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
 import com.example.membersofparliamentproject.databinding.FragmentDetailBinding
@@ -42,6 +43,8 @@ class FragmentDetail : Fragment() {
         binding.hetekaId.text = getString(R.string.HetekaId,args.clickedMember.hetekaId)
         binding.seatNumber.text = getString(R.string.seatNumber,args.clickedMember.seatNumber)
         binding.minister.text = getString(R.string.minister,args.clickedMember.minister)
+        val url = getString(R.string.url,args.clickedMember.pictureUrl)
+        Glide.with(this).load(url).into(binding.mpImage)
 
         val view = binding.root
         return view
