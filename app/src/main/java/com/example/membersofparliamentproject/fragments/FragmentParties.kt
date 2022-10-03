@@ -27,7 +27,6 @@ import com.example.membersofparliamentproject.viewModels.ParliamentMembersViewMo
  */
 
 class FragmentParties : Fragment() {
-    private lateinit var communicator: Communicator
     private lateinit var adapter: PartiesAdapter
     private lateinit var viewModel: FragmentPartiesViewModel
     private var _binding: FragmentPartiesBinding? = null
@@ -39,7 +38,6 @@ class FragmentParties : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentPartiesBinding.inflate(inflater, container, false)
-        communicator = activity as Communicator
         val view = binding.root
 
         return view

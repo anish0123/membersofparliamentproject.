@@ -72,7 +72,7 @@ class FragmentMembers : Fragment() {
             this,
             FragmentMembersViewModelFactory(requireActivity().application)
         )[FragmentMembersViewModel::class.java]
-        Log.d("Clicked Party Members", viewModel.getMembersByParty(clickedParty).toString())
+        Log.d("ClickedPartyMembers", viewModel.getMembersByParty(clickedParty).toString())
 
         //Starting the observer for livedata which is list of parties.
         val clickedPartyObserver = Observer<List<ParliamentMembers>> { partyMembers ->
@@ -83,7 +83,7 @@ class FragmentMembers : Fragment() {
                 override fun onItemClick(position: Int) {
                     val memberResult = partyMembers[position].hetekaId
                     setFragmentResult("requestKeyTwo", bundleOf("bundleKeyTwo" to memberResult))
-                    Log.d("Clicked Member1", memberResult.toString())
+                    Log.d("ClickedMember1", memberResult.toString())
                     findNavController().navigate(R.id.action_fragmentMembers_to_fragmentDetail)
                 }
 

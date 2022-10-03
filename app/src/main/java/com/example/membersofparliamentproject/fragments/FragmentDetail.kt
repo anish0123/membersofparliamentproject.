@@ -7,9 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
 import com.example.membersofparliamentproject.databinding.FragmentDetailBinding
+import com.example.membersofparliamentproject.viewModels.FragmentDetailViewModel
+import com.example.membersofparliamentproject.viewModels.FragmentDetailViewModelFactory
+import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModel
 import java.time.LocalDate
 import kotlin.properties.Delegates
 
@@ -17,25 +23,54 @@ import kotlin.properties.Delegates
 class FragmentDetail : Fragment() {
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
-    private var clickedMemberHetekaId = 0
+    private var clickedMemberHetekaId = 111
+    private lateinit var viewModel: FragmentDetailViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding =FragmentDetailBinding.inflate(inflater,container,false)
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
         setFragmentResultListener("requestKeyTwo") { requestKey, bundle ->
-            Log.d("Fragment Detail", "working till here")
             // We use a String here, but any type that can be put in a Bundle is supported
-            val memberResult = bundle.get("bundleKeyTwo")
-            Log.d("CLicked Member2", "$memberResult")
-            //clickedMemberHetekaId = result
+            val memberResult = bundle.getInt("bundleKeyTwo")
+            clickedMemberHetekaId = memberResult
+            Log.d("ClickedMember33", clickedMemberHetekaId.toString())
         }
-            val view = binding.root
-        return view
 
+
+        val view = binding.root
+        return view
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(
+            this,
+            FragmentDetailViewModelFactory(requireActivity().application)
+        )[FragmentDetailViewModel::class.java]
+        //viewModel.getMemberByHetekaId(clickedMemberHetekaId)
+        Log.d("GetMember",viewModel.getMemberByHetekaId(clickedMemberHetekaId).toString() )
+
+        /*
+        val clickedMemberObserver = Observer<ParliamentMembers> {member ->
+            Log.d("Observer Member", member.toString())
+           // binding.hetekaId.text = "working"
+            //binding.party.text =member.party
+            //binding.seatNumber.text = member.seatNumber.toString()
+
+        }
+
+
+        viewModel.clickedMember.observe(viewLifecycleOwner,clickedMemberObserver)
+
+
+         */
+    }
+
 
 
 }

@@ -24,4 +24,7 @@ interface ParliamentMembersDao {
 
     @Query("SELECT * FROM ParliamentMembers_table WHERE party LIKE :party")
     fun getMembersByParty(party: String): List<ParliamentMembers>
+
+    @Query("SELECT * FROM ParliamentMembers_table WHERE hetekaId LIKE :hetekaId")
+    suspend fun getMemberByHetekaId(hetekaId: Int): ParliamentMembers
 }
