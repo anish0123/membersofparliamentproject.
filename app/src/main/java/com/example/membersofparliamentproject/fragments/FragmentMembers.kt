@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -31,7 +33,7 @@ import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewMode
  */
 
 class FragmentMembers : Fragment() {
-    private lateinit var clickedParty: String
+    private var clickedParty: String =""
     private lateinit var adapter: MembersAdapter
     private var _binding: FragmentMembersBinding? = null
     private val binding get() = _binding!!
@@ -45,9 +47,7 @@ class FragmentMembers : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentMembersBinding.inflate(inflater, container, false)
-
-        //arguments and communicator for getting party name from fragment Parties.
-        clickedParty = arguments?.getString("party").toString()
+        //bundle for getting party name from fragment Parties.
         setFragmentResultListener("requestKey") { requestKey, bundle ->
             // We use a String here, but any type that can be put in a Bundle is supported
             val result = bundle.getString("bundleKey")
@@ -81,7 +81,10 @@ class FragmentMembers : Fragment() {
             //Adding setOnClickListener so whenever the party is clicked it displays it's members in Fragment Members
             adapter.setonItemClickListener(object : MembersAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    findNavController().navigate(R.id.action_fragmentParties2_to_fragmentMembers2)
+                    val memberResult = partyMembers[position].hetekaId
+                    setFragmentResult("requestKeyTwo", bundleOf("bundleKeyTwo" to memberResult))
+                    Log.d("Clicked Member1", memberResult.toString())
+                    findNavController().navigate(R.id.action_fragmentMembers_to_fragmentDetail)
                 }
 
 

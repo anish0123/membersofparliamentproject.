@@ -62,7 +62,6 @@ class FragmentParties : Fragment() {
             //Adding setOnClickListener so whenever the party is clicked it displays it's members in Fragment Members
             adapter.setonItemClickListener(object: PartiesAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    //communicator.passParty(parties[position])
                     val result = parties[position]
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     Log.d("Clicked Party1", parties[position])
