@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/mpImage"
-        android:layout_width="191dp"
-        android:layout_height="184dp"
+        android:layout_width="228dp"
+        android:layout_height="172dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.464"
@@ -25,9 +25,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpImage"
-        app:layout_constraintVertical_bias="0.069">
+        app:layout_constraintVertical_bias="0.1">
 
         <TextView
             android:id="@+id/hetekaId"
@@ -61,7 +62,6 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
         android:text="@string/name"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mpImage"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.207" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/minsterAndParty"
@@ -80,7 +80,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.162">
+        app:layout_constraintVertical_bias="0.061">
 
         <TextView
             android:id="@+id/minister"
@@ -111,21 +111,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/extra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="394dp"
+        android:layout_height="166dp"
         android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/minsterAndParty"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.093">
 
         <TextView
             android:id="@+id/twitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/twitter"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.049"
@@ -140,6 +141,7 @@
             android:layout_marginTop="22dp"
             android:layout_marginBottom="44dp"
             android:text="@string/bornYear"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.046"
@@ -152,6 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/constituency"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.049"
@@ -159,6 +162,43 @@
             app:layout_constraintTop_toBottomOf="@+id/twitter"
             app:layout_constraintVertical_bias="0.198" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="21dp"
+        android:background="@color/FinnishBlue"
+        app:cardBackgroundColor="@color/FinnishBlue"
+        app:layout_constraintBottom_toTopOf="@+id/extra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minsterAndParty"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/FinnishBlue"
+        app:cardBackgroundColor="@color/FinnishBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/extra"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginBottom="15dp"
+        app:cardBackgroundColor="@color/FinnishBlue"
+        app:layout_constraintBottom_toTopOf="@+id/hetekaIdAndSeatNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mpImage"
+        app:layout_constraintVertical_bias="0.782" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
