@@ -29,6 +29,6 @@ interface ParliamentMembersDao {
 
     //This method provides all the list of the members of the selected party
     @Query("SELECT * FROM ParliamentMembers_table WHERE party LIKE :party")
-    fun getMembersByParty(party: String): List<ParliamentMembers>
+    suspend fun getMembersByParty(party: String): List<ParliamentMembers>
 
 }

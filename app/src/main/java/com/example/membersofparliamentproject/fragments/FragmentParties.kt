@@ -58,7 +58,7 @@ class FragmentParties : Fragment() {
             //Adding setOnClickListener so whenever the party is clicked it displays it's members in Fragment Members
             adapter.setonItemClickListener(object : PartiesAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val result = parties[position]
+                    val result = parties.distinct().sorted()[position]
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     Log.d("Clicked Party1", parties[position])
                     findNavController().navigate(R.id.action_fragmentParties2_to_fragmentMembers2)

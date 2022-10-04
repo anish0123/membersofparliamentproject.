@@ -26,7 +26,7 @@ class ParliamentMemberRepository(
         parliamentMembersExtraDao.addAllExtra(extraList)
 
     //This function is called for getting members of a selected party.
-    fun getMembersByParty(party: String): List<ParliamentMembers> =
+    suspend fun getMembersByParty(party: String): List<ParliamentMembers> =
         parliamentMembersDao.getMembersByParty(party)
 
 }
