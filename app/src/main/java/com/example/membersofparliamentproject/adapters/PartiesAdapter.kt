@@ -1,15 +1,13 @@
-package com.example.membersofparliamentproject
+package com.example.membersofparliamentproject.adapters
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.membersofparliamentproject.R
 
-class PartiesAdapter(private val partiesList : List<String>) :
+class PartiesAdapter(private val partiesList: List<String>) :
     RecyclerView.Adapter<PartiesViewHolder>() {
     private lateinit var myListener: OnItemClickListener
 
@@ -39,14 +37,16 @@ class PartiesAdapter(private val partiesList : List<String>) :
         return partiesList.size
     }
 }
-    class  PartiesViewHolder(itemView: View, listener: PartiesAdapter.OnItemClickListener) :
-        RecyclerView.ViewHolder(itemView) {
-        val partyHeading: TextView = itemView.findViewById(R.id.item_title)
-        init {
-            itemView.setOnClickListener{
-                listener.onItemClick(adapterPosition)
-            }
-        }
 
+class PartiesViewHolder(itemView: View, listener: PartiesAdapter.OnItemClickListener) :
+    RecyclerView.ViewHolder(itemView) {
+    val partyHeading: TextView = itemView.findViewById(R.id.item_title)
+
+    init {
+        itemView.setOnClickListener {
+            listener.onItemClick(adapterPosition)
+        }
     }
+
+}
 

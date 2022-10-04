@@ -6,25 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.membersofparliamentproject.MembersAdapter
-import com.example.membersofparliamentproject.PartiesAdapter
-import com.example.membersofparliamentproject.R
+import com.example.membersofparliamentproject.adapters.MembersAdapter
 import com.example.membersofparliamentproject.database.ParliamentMembers
 import com.example.membersofparliamentproject.databinding.FragmentMembersBinding
 import com.example.membersofparliamentproject.viewModels.FragmentMembersViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentMembersViewModelFactory
-import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModel
-import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModelFactory
 
 /**
  * This Fragment is used to display list of party members in a recyclerView.
@@ -32,7 +23,7 @@ import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewMode
  */
 
 class FragmentMembers : Fragment() {
-    private var clickedParty: String =""
+    private var clickedParty: String = ""
     private lateinit var adapter: MembersAdapter
     private var _binding: FragmentMembersBinding? = null
     private val binding get() = _binding!!
@@ -81,7 +72,8 @@ class FragmentMembers : Fragment() {
             adapter.setonItemClickListener(object : MembersAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
                     val memberResult = partyMembers[position]
-                    val action = FragmentMembersDirections.actionFragmentMembersToFragmentDetail(memberResult)
+                    val action =
+                        FragmentMembersDirections.actionFragmentMembersToFragmentDetail(memberResult)
                     findNavController().navigate(action)
 
                 }
@@ -90,7 +82,7 @@ class FragmentMembers : Fragment() {
             })
         }
         //Initialising observer
-        viewModel.clickedPartyMembers.observe(viewLifecycleOwner,clickedPartyObserver)
+        viewModel.clickedPartyMembers.observe(viewLifecycleOwner, clickedPartyObserver)
 
     }
 }

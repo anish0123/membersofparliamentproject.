@@ -22,13 +22,17 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
     val listedExtras: LiveData<List<ParliamentMembersExtra>> = _listedExtras
 
     // Initialise repository
-    private val parliamentMemberRepository = ParliamentMemberRepository(AppDataBase.getDatabase(application).parliamentMembersDao(),AppDataBase.getDatabase(application).parliamentMembersExtraDao())
+    private val parliamentMemberRepository = ParliamentMemberRepository(
+        AppDataBase.getDatabase(application).parliamentMembersDao(),
+        AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+    )
 
     //Fetching the data from network
     fun getMembers() {
         viewModelScope.launch {
             try {
-                _listedMembers.value = ParliamentMemberApi.retrofitService.getParliamentMembersList()
+                _listedMembers.value =
+                    ParliamentMemberApi.retrofitService.getParliamentMembersList()
                 Log.d("NETWORK", "Fetching successfully")
             } catch (e: java.lang.Exception) {
                 Log.d(ContentValues.TAG, "no luck in getting members: $e")
@@ -51,7 +55,8 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
     fun getExtras() {
         viewModelScope.launch {
             try {
-                _listedExtras.value = ParliamentMemberExtraApi.retrofitService.getParliamentMembersExtra()
+                _listedExtras.value =
+                    ParliamentMemberExtraApi.retrofitService.getParliamentMembersExtra()
                 Log.d("NETWORK", "Fetching successfully")
             } catch (e: java.lang.Exception) {
                 Log.d("NETWORK", "no luck in getting members: $e")
@@ -61,7 +66,7 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
 
     fun saveExtraToDatabase() {
         val obtainedExtraList: List<ParliamentMembersExtra>? = _listedExtras.value
-        if(obtainedExtraList != null) {
+        if (obtainedExtraList != null) {
             viewModelScope.launch {
                 parliamentMemberRepository.addAllExtras(obtainedExtraList)
                 Log.d("EXTRALIST", "extralist obtained")
@@ -83,9 +88,9 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
  *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android
  */
-class FragmentStartViewModelFactory(val app:Application): ViewModelProvider.Factory {
+class FragmentStartViewModelFactory(val app: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if(modelClass.isAssignableFrom(FragmentStartViewModel::class.java)) {
+        return if (modelClass.isAssignableFrom(FragmentStartViewModel::class.java)) {
             FragmentStartViewModel(this.app) as T
         } else {
             throw IllegalArgumentException("ViewModel not found")

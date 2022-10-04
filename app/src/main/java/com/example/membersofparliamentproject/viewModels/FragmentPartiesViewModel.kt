@@ -10,10 +10,13 @@ import kotlinx.coroutines.launch
 /**
  * This is the ViewModel for fragmentParties
  */
-class FragmentPartiesViewModel(application: Application): AndroidViewModel(application) {
+class FragmentPartiesViewModel(application: Application) : AndroidViewModel(application) {
 
     //Introducing live data objects for observing
-    private val parliamentMemberRepository = ParliamentMemberRepository(AppDataBase.getDatabase(application).parliamentMembersDao(),AppDataBase.getDatabase(application).parliamentMembersExtraDao())
+    private val parliamentMemberRepository = ParliamentMemberRepository(
+        AppDataBase.getDatabase(application).parliamentMembersDao(),
+        AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+    )
     private var _listedParties = MutableLiveData<List<String>>()
     val listedParties: LiveData<List<String>> = _listedParties
 
@@ -27,9 +30,9 @@ class FragmentPartiesViewModel(application: Application): AndroidViewModel(appli
 }
 
 //Introducing a viewModel Factory
-class FragmentPartiesViewModelFactory(val app:Application): ViewModelProvider.Factory {
+class FragmentPartiesViewModelFactory(val app: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if(modelClass.isAssignableFrom(FragmentPartiesViewModel::class.java)) {
+        return if (modelClass.isAssignableFrom(FragmentPartiesViewModel::class.java)) {
             FragmentPartiesViewModel(this.app) as T
         } else {
             throw IllegalArgumentException("ViewModel not found")

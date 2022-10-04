@@ -41,12 +41,13 @@ class FragmentDetail : Fragment() {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
 
         //Displaying member details in textViews
-        binding.party.text = getString(R.string.partyDisplay,args.clickedMember.party)
-        binding.name.text = getString(R.string.name,args.clickedMember.firstname,args.clickedMember.lastname)
-        binding.hetekaId.text = getString(R.string.HetekaId,args.clickedMember.hetekaId)
-        binding.seatNumber.text = getString(R.string.seatNumber,args.clickedMember.seatNumber)
-        binding.minister.text = getString(R.string.minister,args.clickedMember.minister)
-        val url = getString(R.string.url,args.clickedMember.pictureUrl)
+        binding.party.text = getString(R.string.partyDisplay, args.clickedMember.party)
+        binding.name.text =
+            getString(R.string.name, args.clickedMember.firstname, args.clickedMember.lastname)
+        binding.hetekaId.text = getString(R.string.HetekaId, args.clickedMember.hetekaId)
+        binding.seatNumber.text = getString(R.string.seatNumber, args.clickedMember.seatNumber)
+        binding.minister.text = getString(R.string.minister, args.clickedMember.minister)
+        val url = getString(R.string.url, args.clickedMember.pictureUrl)
         //Introducing glide for getting members pictures for imageView
         Glide.with(this).load(url).into(binding.mpImage)
 
@@ -65,7 +66,6 @@ class FragmentDetail : Fragment() {
 
 
     }
-
 
 
 }

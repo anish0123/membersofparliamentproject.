@@ -1,17 +1,15 @@
-package com.example.membersofparliamentproject
+package com.example.membersofparliamentproject.adapters
 
-import android.content.ContentValues
-import android.content.res.Resources
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
 
 
-class MembersAdapter (private val partyMembers: List<ParliamentMembers>) :
+class MembersAdapter(private val partyMembers: List<ParliamentMembers>) :
     RecyclerView.Adapter<MemberViewHolder>() {
     private lateinit var myListener: OnItemClickListener
 
@@ -44,11 +42,12 @@ class MembersAdapter (private val partyMembers: List<ParliamentMembers>) :
 
 }
 
-class MemberViewHolder (itemView: View, listener: MembersAdapter.OnItemClickListener) :
+class MemberViewHolder(itemView: View, listener: MembersAdapter.OnItemClickListener) :
     RecyclerView.ViewHolder(itemView) {
     val partyHeading: TextView = itemView.findViewById(R.id.item_title)
+
     init {
-        itemView.setOnClickListener{
+        itemView.setOnClickListener {
             listener.onItemClick(adapterPosition)
         }
     }

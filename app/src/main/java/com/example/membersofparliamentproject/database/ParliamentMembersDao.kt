@@ -17,7 +17,7 @@ interface ParliamentMembersDao {
 
     //This method is to insert all members from network to the database
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addAllMembers(memberList:List<ParliamentMembers>)
+    suspend fun addAllMembers(memberList: List<ParliamentMembers>)
 
     //This method can be used to get all the data of parliament members
     @Query("SELECT * FROM ParliamentMembers_table ORDER BY HetekaId ASC")

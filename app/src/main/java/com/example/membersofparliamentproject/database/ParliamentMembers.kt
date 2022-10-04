@@ -14,10 +14,10 @@ data class ParliamentMembers(
     @PrimaryKey(autoGenerate = false)
     val hetekaId: Int,
     val seatNumber: Int,
-     val lastname: String,
+    val lastname: String,
     val firstname: String,
     val party: String,
     val minister: Boolean,
     val pictureUrl: String
 
-): Parcelable
+) : Parcelable

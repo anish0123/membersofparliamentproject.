@@ -31,6 +31,7 @@ interface ParliamentMemberApiService {
     @GET("seating.json")
     suspend fun getParliamentMembersList(): List<ParliamentMembers>
 }
+
 //Starting the connection to get the data
 object ParliamentMemberApi {
     val retrofitService: ParliamentMemberApiService by lazy {

@@ -9,7 +9,11 @@ import androidx.room.RoomDatabase
  * This is the database class.
  */
 
-@Database(entities = [ParliamentMembers::class,ParliamentMembersExtra::class], version = 1, exportSchema = false)
+@Database(
+    entities = [ParliamentMembers::class, ParliamentMembersExtra::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun parliamentMembersDao(): ParliamentMembersDao
@@ -19,13 +23,13 @@ abstract class AppDataBase : RoomDatabase() {
 
         //Creating an instance of the database
         @Volatile
-        private var INSTANCE : AppDataBase? = null
+        private var INSTANCE: AppDataBase? = null
 
-        fun getDatabase(context: Context): AppDataBase{
+        fun getDatabase(context: Context): AppDataBase {
 
             val tempInstance = INSTANCE
 
-            if(tempInstance != null) {
+            if (tempInstance != null) {
                 return tempInstance
             }
             synchronized(this) {

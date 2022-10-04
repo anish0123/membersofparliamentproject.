@@ -12,14 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.membersofparliamentproject.PartiesAdapter
+import com.example.membersofparliamentproject.adapters.PartiesAdapter
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.databinding.FragmentPartiesBinding
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModelFactory
-import com.example.membersofparliamentproject.viewModels.FragmentStartViewModelFactory
-import com.example.membersofparliamentproject.viewModels.ParliamentMembersViewModel
 
 /**
  * This is Party Fragment which displays party lists on recyclerView
@@ -49,16 +46,17 @@ class FragmentParties : Fragment() {
         //Initialising recyclerView, its adapter and viewModel
         binding.recyclerViewParty.layoutManager = layoutManager
         binding.recyclerViewParty.setHasFixedSize(true)
-        viewModel = ViewModelProvider(this,
+        viewModel = ViewModelProvider(
+            this,
             FragmentPartiesViewModelFactory(requireActivity().application)
         )[FragmentPartiesViewModel::class.java]
         viewModel.getMemberParty()
         //Starting the observer for livedata which is list of parties.
-        val partiesObserver = Observer<List<String>> {parties ->
+        val partiesObserver = Observer<List<String>> { parties ->
             adapter = PartiesAdapter(parties.distinct().sorted())
             binding.recyclerViewParty.adapter = adapter
             //Adding setOnClickListener so whenever the party is clicked it displays it's members in Fragment Members
-            adapter.setonItemClickListener(object: PartiesAdapter.OnItemClickListener {
+            adapter.setonItemClickListener(object : PartiesAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
                     val result = parties[position]
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))

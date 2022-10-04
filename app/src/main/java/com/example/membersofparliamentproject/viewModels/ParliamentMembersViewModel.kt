@@ -10,20 +10,24 @@ import com.example.membersofparliamentproject.database.ParliamentMembers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ParliamentMembersViewModel(application: Application): AndroidViewModel(application) {
+class ParliamentMembersViewModel(application: Application) : AndroidViewModel(application) {
 
     private val readAllData: LiveData<List<ParliamentMembers>>
     private val repository: ParliamentMemberRepository
 
     init {
-       val parliamentMembersDao = AppDataBase.getDatabase(application).parliamentMembersDao()
-        repository = ParliamentMemberRepository(AppDataBase.getDatabase(application).parliamentMembersDao(),AppDataBase.getDatabase(application).parliamentMembersExtraDao())
-           readAllData = repository.readAllData
+        val parliamentMembersDao = AppDataBase.getDatabase(application).parliamentMembersDao()
+        repository = ParliamentMemberRepository(
+            AppDataBase.getDatabase(application).parliamentMembersDao(),
+            AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+        )
+        readAllData = repository.readAllData
 
     }
+
     fun addMember(member: ParliamentMembers) {
         viewModelScope.launch(Dispatchers.IO) {
-           repository.addMember(member)
+            repository.addMember(member)
         }
     }
 }

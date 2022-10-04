@@ -12,30 +12,33 @@ import kotlinx.coroutines.launch
 /**
  * This is a viewModel for fragmentMembers
  */
-class FragmentMembersViewModel(application: Application): AndroidViewModel(application) {
+class FragmentMembersViewModel(application: Application) : AndroidViewModel(application) {
 
     //Initialising repository.
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
-        AppDataBase.getDatabase(application).parliamentMembersExtraDao())
+        AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+    )
 
     //Initialising variables for storing the party members of clicked party
     private var _clickedPartyMembers = MutableLiveData<List<ParliamentMembers>>()
-    val clickedPartyMembers :LiveData<List<ParliamentMembers>> = _clickedPartyMembers
+    val clickedPartyMembers: LiveData<List<ParliamentMembers>> = _clickedPartyMembers
+    private var clickedPartyName: String = ""
 
     //Introducing function for getting party members of clicked party.
     fun getMembersByParty(party: String) {
         viewModelScope.launch {
             _clickedPartyMembers.value = parliamentMemberRepository.getMembersByParty(party)
-        }
 
+        }
     }
+
 }
 
 //Introducing viewModel factory for using application context
-class FragmentMembersViewModelFactory(val app:Application): ViewModelProvider.Factory {
+class FragmentMembersViewModelFactory(val app: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if(modelClass.isAssignableFrom(FragmentMembersViewModel::class.java)) {
+        return if (modelClass.isAssignableFrom(FragmentMembersViewModel::class.java)) {
             FragmentMembersViewModel(this.app) as T
         } else {
             throw IllegalArgumentException("ViewModel not found")

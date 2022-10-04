@@ -13,6 +13,9 @@
         <argument
             android:name="clickedMember"
             app:argType="com.example.membersofparliamentproject.database.ParliamentMembers" />
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragmentMembers"
+            app:destination="@id/fragmentMembers" />
     </fragment>
     <fragment
         android:id="@+id/fragmentParties2"
@@ -22,6 +25,9 @@
         <action
             android:id="@+id/action_fragmentParties2_to_fragmentMembers2"
             app:destination="@id/fragmentMembers" />
+        <action
+            android:id="@+id/action_fragmentParties2_to_fragmentStart3"
+            app:destination="@id/fragmentStart3" />
     </fragment>
     <fragment
         android:id="@+id/fragmentStart3"
@@ -42,5 +48,8 @@
         <argument
             android:name="clickedParty"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentMembers_to_fragmentParties2"
+            app:destination="@id/fragmentParties2" />
     </fragment>
 </navigation>

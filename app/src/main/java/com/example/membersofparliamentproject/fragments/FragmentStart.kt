@@ -25,16 +25,19 @@ class FragmentStart : Fragment() {
     // - Comments: You should have 1 viewmodel per fragment only.
     private lateinit var viewModel: FragmentStartViewModel
     private var _binding: FragmentStartBinding? = null
-    private val binding get() =_binding!!
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentStartBinding.inflate(inflater,container,false)
+        _binding = FragmentStartBinding.inflate(inflater, container, false)
         val view = binding.root
 
         // Initialise FragmentStartViewModel
-        viewModel = ViewModelProvider(this, FragmentStartViewModelFactory(requireActivity().application))[FragmentStartViewModel::class.java]
+        viewModel = ViewModelProvider(
+            this,
+            FragmentStartViewModelFactory(requireActivity().application)
+        )[FragmentStartViewModel::class.java]
         //Get the data from the URI and save it into database
         viewModel.getMembers()
         viewModel.saveDataToDatabase()

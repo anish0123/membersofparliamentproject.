@@ -30,7 +30,7 @@ private val retrofit = Retrofit.Builder()
 //Introducing interface to get the data
 interface ParliamentMemberExtraApiService {
     @GET("extras.json")
-    suspend fun getParliamentMembersExtra() : List<ParliamentMembersExtra>
+    suspend fun getParliamentMembersExtra(): List<ParliamentMembersExtra>
 }
 
 //starting the connection to get the data
