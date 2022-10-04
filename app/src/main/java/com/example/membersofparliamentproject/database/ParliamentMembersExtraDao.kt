@@ -21,5 +21,8 @@ interface ParliamentMembersExtraDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAllExtra(extraList: List<ParliamentMembersExtra>)
 
+    @Query("SELECT * FROM extra_table WHERE hetekaId = :hetekaId")
+    suspend fun getExtraInfo(hetekaId: Int): ParliamentMembersExtra
+
 
 }

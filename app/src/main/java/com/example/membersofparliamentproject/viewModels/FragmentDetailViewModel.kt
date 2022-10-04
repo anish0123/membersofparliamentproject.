@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.AppDataBase
 import com.example.membersofparliamentproject.database.ParliamentMemberRepository
 import com.example.membersofparliamentproject.database.ParliamentMembers
+import com.example.membersofparliamentproject.database.ParliamentMembersExtra
 import kotlinx.coroutines.launch
 
 /**
@@ -19,8 +20,14 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
     )
 
     //Introducing live data object
-    private var _clickedMember = MutableLiveData<ParliamentMembers>()
-    val clickedMember: LiveData<ParliamentMembers> = _clickedMember
+    private var _extraInfo= MutableLiveData<ParliamentMembersExtra>()
+    val extraInfo: LiveData<ParliamentMembersExtra> = _extraInfo
+
+    fun getExtraInfo(hetekaId: Int) {
+        viewModelScope.launch {
+            _extraInfo.value = parliamentMemberRepository.getExtraInfo(hetekaId)
+        }
+    }
 
 
 }

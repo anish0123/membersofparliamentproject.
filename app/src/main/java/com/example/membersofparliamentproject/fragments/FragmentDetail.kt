@@ -63,6 +63,15 @@ class FragmentDetail : Fragment() {
             this,
             FragmentDetailViewModelFactory(requireActivity().application)
         )[FragmentDetailViewModel::class.java]
+        val memberHetekaId = args.clickedMember.hetekaId
+        viewModel.getExtraInfo(memberHetekaId)
+
+        val extraInfo = viewModel.extraInfo.value
+
+        if (extraInfo != null) {
+            binding.seatNumber.text = extraInfo.bornYear.toString()
+            Log.d("ExtraInfoTest", "working till here ")
+        }
 
 
     }
