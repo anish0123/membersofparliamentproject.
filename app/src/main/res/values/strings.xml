@@ -8,7 +8,7 @@
     <string name="seatNumber">Seat Number: %d</string>
     <string name="minister">Minister: %b</string>
     <string name="url">https://avoindata.eduskunta.fi/%s</string>
-    <string name="twitter">Twitter: </string>
-    <string name="bornYear">Born Year: </string>
-    <string name="constituency">Constituency: </string>
+    <string name="twitter">Twitter: %s</string>
+    <string name="bornYear">Born Year: %d</string>
+    <string name="constituency">Constituency: %s</string>
 </resources>

@@ -32,4 +32,6 @@ class ParliamentMemberRepository(
     //This function is called to get extra Info of a selected member
     suspend fun getExtraInfo(hetekaId: Int): ParliamentMembersExtra = parliamentMembersExtraDao.getExtraInfo(hetekaId)
 
+    suspend fun getAllExtraInfo(): List<ParliamentMembersExtra> = parliamentMembersExtraDao.getAllExtraInfo()
+
 }

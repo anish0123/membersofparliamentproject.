@@ -24,5 +24,9 @@ interface ParliamentMembersExtraDao {
     @Query("SELECT * FROM extra_table WHERE hetekaId = :hetekaId")
     suspend fun getExtraInfo(hetekaId: Int): ParliamentMembersExtra
 
+    //Funtion to get all extraInfo about members
+    @Query("SELECT * FROM extra_table")
+    suspend fun getAllExtraInfo(): List<ParliamentMembersExtra>
+
 
 }

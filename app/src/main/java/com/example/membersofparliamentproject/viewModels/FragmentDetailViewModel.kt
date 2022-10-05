@@ -1,6 +1,7 @@
 package com.example.membersofparliamentproject.viewModels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.AppDataBase
 import com.example.membersofparliamentproject.database.ParliamentMemberRepository
@@ -20,12 +21,12 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
     )
 
     //Introducing live data object
-    private var _extraInfo= MutableLiveData<ParliamentMembersExtra>()
-    val extraInfo: LiveData<ParliamentMembersExtra> = _extraInfo
+    private var _extraInfo= MutableLiveData<List<ParliamentMembersExtra>>()
+    val extraInfo: LiveData<List<ParliamentMembersExtra>> = _extraInfo
 
-    fun getExtraInfo(hetekaId: Int) {
+    fun getAllExtraInfo() {
         viewModelScope.launch {
-            _extraInfo.value = parliamentMemberRepository.getExtraInfo(hetekaId)
+            _extraInfo.value = parliamentMemberRepository.getAllExtraInfo()
         }
     }
 

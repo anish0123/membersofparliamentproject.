@@ -14,4 +14,5 @@ data class ParliamentMembersExtra(
     val hetekaId: Int,
     val constituency: String,
     val twitter: String
+
 )

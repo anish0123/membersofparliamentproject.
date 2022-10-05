@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
+import com.example.membersofparliamentproject.database.ParliamentMembersExtra
 import com.example.membersofparliamentproject.databinding.FragmentDetailBinding
 import com.example.membersofparliamentproject.viewModels.FragmentDetailViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentDetailViewModelFactory
@@ -64,16 +65,26 @@ class FragmentDetail : Fragment() {
             FragmentDetailViewModelFactory(requireActivity().application)
         )[FragmentDetailViewModel::class.java]
         val memberHetekaId = args.clickedMember.hetekaId
-        viewModel.getExtraInfo(memberHetekaId)
+        //Getting all the extraInfo
+        viewModel.getAllExtraInfo()
 
-        val extraInfo = viewModel.extraInfo.value
+        //Observing extraInfos to get extra Info of a member by comparing hetekaId
+        val extraInfoObeserver = Observer<List<ParliamentMembersExtra>> {extraInfo ->
+            for(i in extraInfo) {
+                if( i.hetekaId == memberHetekaId) {
+                    binding.bornYear.text = getString(R.string.bornYear,i.bornYear)
+                    binding.constituency.text= getString(R.string.constituency,i.constituency)
+                    binding.twitter.text = getString(R.string.twitter,i.twitter)
 
-        if (extraInfo != null) {
-            binding.seatNumber.text = extraInfo.bornYear.toString()
-            Log.d("ExtraInfoTest", "working till here ")
+                } else {
+                   binding.extra.visibility = View.GONE
+                }
+            }
+
         }
 
-
+        //Initialising observer
+        viewModel.extraInfo.observe(viewLifecycleOwner,extraInfoObeserver)
     }
 
 
