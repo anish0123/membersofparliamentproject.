@@ -9,6 +9,7 @@
     <string name="minister">Minister: %b</string>
     <string name="url">https://avoindata.eduskunta.fi/%s</string>
     <string name="twitter">Twitter: %s</string>
-    <string name="bornYear">Born Year: %d</string>
+    <string name="bornYear">Born Year: %s</string>
     <string name="constituency">Constituency: %s</string>
+    <string name="notAvailable">Not Available</string>
 </resources>

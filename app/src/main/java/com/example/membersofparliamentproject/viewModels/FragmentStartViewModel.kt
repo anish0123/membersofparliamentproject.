@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.*
 import com.example.membersofparliamentproject.network.ParliamentMemberApi
-import com.example.membersofparliamentproject.network.ParliamentMemberExtraApi
 import kotlinx.coroutines.launch
 
 /**
@@ -33,7 +32,7 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
             try {
                 _listedMembers.value =
                     ParliamentMemberApi.retrofitService.getParliamentMembersList()
-                Log.d("NETWORK", "Fetching successfully")
+                Log.d("FETCH", "Fetching successfully")
             } catch (e: java.lang.Exception) {
                 Log.d(ContentValues.TAG, "no luck in getting members: $e")
             }
@@ -56,7 +55,7 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
         viewModelScope.launch {
             try {
                 _listedExtras.value =
-                    ParliamentMemberExtraApi.retrofitService.getParliamentMembersExtra()
+                    ParliamentMemberApi.retrofitService.getParliamentMembersExtra()
                 Log.d("NETWORK", "Fetching successfully")
             } catch (e: java.lang.Exception) {
                 Log.d("NETWORK", "no luck in getting members: $e")

@@ -24,6 +24,7 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
     private var _extraInfo= MutableLiveData<List<ParliamentMembersExtra>>()
     val extraInfo: LiveData<List<ParliamentMembersExtra>> = _extraInfo
 
+    //Function to save extraInfo to live data
     fun getAllExtraInfo() {
         viewModelScope.launch {
             _extraInfo.value = parliamentMemberRepository.getAllExtraInfo()

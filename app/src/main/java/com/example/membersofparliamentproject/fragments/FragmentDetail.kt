@@ -72,12 +72,16 @@ class FragmentDetail : Fragment() {
         val extraInfoObeserver = Observer<List<ParliamentMembersExtra>> {extraInfo ->
             for(i in extraInfo) {
                 if( i.hetekaId == memberHetekaId) {
-                    binding.bornYear.text = getString(R.string.bornYear,i.bornYear)
+                    binding.bornYear.text = getString(R.string.bornYear,i.bornYear.toString())
                     binding.constituency.text= getString(R.string.constituency,i.constituency)
                     binding.twitter.text = getString(R.string.twitter,i.twitter)
 
                 } else {
-                   binding.extra.visibility = View.GONE
+                    binding.bornYear.text = getString(R.string.bornYear,"Not Available")
+                    binding.constituency.text = getString(R.string.constituency,"Not Available")
+                    binding.twitter.text = getString(R.string.twitter,"Not Available")
+
+
                 }
             }
 
