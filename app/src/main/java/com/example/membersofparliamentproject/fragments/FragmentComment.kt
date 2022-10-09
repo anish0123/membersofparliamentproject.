@@ -57,14 +57,23 @@ class FragmentComment : Fragment() {
             for ( i in comment) {
                 if (i.hetekaId == clickedMemberHetekaId) {
                     binding.textViewComment.text = getString(R.string.comment,i.comment)
-                    binding.textViewLike.text = getString(R.string.likeOrDislike,i.like)
+                    if(i.like) {
+                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
+                    } else {
+                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
+                    }
+
                     like = i.like
                     savedComment = i.comment
                     commentId = i.commentId
                     break
                 }else {
                     binding.textViewComment.text = getString(R.string.comment,"")
-                    binding.textViewLike.text = getString(R.string.likeOrDislike,i.like)
+                    if(i.like) {
+                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
+                    } else {
+                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
+                    }
                 }
             }
 
@@ -96,7 +105,7 @@ class FragmentComment : Fragment() {
                 )
             like = true
 
-            binding.textViewLike.text = getString(R.string.likeOrDislike,like)
+            binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
         }
 
         //Adding setOnClickListener for dislike button.
@@ -113,7 +122,7 @@ class FragmentComment : Fragment() {
             )
             like = false
 
-            binding.textViewLike.text = getString(R.string.likeOrDislike,like)
+            binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
         }
         //Starting observer for comment
         viewModel.comment.observe(viewLifecycleOwner,commentObserver)

@@ -58,10 +58,13 @@
     <fragment
         android:id="@+id/fragmentComment"
         android:name="com.example.membersofparliamentproject.fragments.FragmentComment"
-        android:label="fragment_comment"
-        tools:layout="@layout/fragment_comment" >
+        android:label="Comment And Like"
+        tools:layout="@layout/fragment_comment">
         <argument
             android:name="hetekaId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentComment_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
     </fragment>
 </navigation>

@@ -26,13 +26,19 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
     val extraInfo: LiveData<List<ParliamentMembersExtra>> = _extraInfo
     var _extraInfoById = MutableLiveData<ParliamentMembersExtra>()
 
-    //Function to save extraInfo to live data
+    /**
+     * Function to save extraInfo to live data
+     */
+
     fun getAllExtraInfo() {
         viewModelScope.launch {
             _extraInfo.value = parliamentMemberRepository.getAllExtraInfo()
         }
     }
 
+    /**
+     * Funtion to get extraInfo according to hetekaId
+     */
     fun getExtraInfo(hetekaId: Int) {
         viewModelScope.launch {
             _extraInfoById.value = parliamentMemberRepository.getExtraInfo(hetekaId)
@@ -42,7 +48,13 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
 
 }
 
-//Creating a view model factory for fragmentDetail viewModel
+/**
+ * This Factory class helps to initialize FragmentDetailViewModel with application as
+ * parameter (without it, we cannot have application context to create your AppDatabase)
+ *
+ *
+ * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android
+ */
 class FragmentDetailViewModelFactory(val app: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(FragmentDetailViewModel::class.java)) {

@@ -27,6 +27,9 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
         AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
     )
 
+    /**
+     * Function for fetching the details of parliament members from network
+     */
     //Fetching the data from network
     fun getMembers() {
         viewModelScope.launch {
@@ -40,7 +43,10 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
-    // Function to save data from network to database
+    /**
+     * Function to save data from network to database
+     */
+
     fun saveDataToDatabase() {
         val obtainedList: List<ParliamentMembers>? = _listedMembers.value
         //In the case that value of MutableLiveData is not nul (success from network fetching)
@@ -52,6 +58,9 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
 
     }
 
+    /**
+     * Function for fetching the extra details of parliament members from network
+     */
     fun getExtras() {
         viewModelScope.launch {
             try {
@@ -64,6 +73,9 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
+    /**
+     * Function to save extra details from network to database
+     */
     fun saveExtraToDatabase() {
         val obtainedExtraList: List<ParliamentMembersExtra>? = _listedExtras.value
         Log.d(TAG, obtainedExtraList?.size.toString())

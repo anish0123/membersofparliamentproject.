@@ -26,7 +26,9 @@ class FragmentMembersViewModel(application: Application) : AndroidViewModel(appl
     val clickedPartyMembers: LiveData<List<ParliamentMembers>> = _clickedPartyMembers
     private var clickedPartyName: String = ""
 
-    //Introducing function for getting party members of clicked party.
+    /**
+     * Introducing function for getting party members of clicked party.
+     */
     fun getMembersByParty(party: String) {
         viewModelScope.launch {
             _clickedPartyMembers.value = parliamentMemberRepository.getMembersByParty(party)
@@ -36,7 +38,13 @@ class FragmentMembersViewModel(application: Application) : AndroidViewModel(appl
 
 }
 
-//Introducing viewModel factory for using application context
+/**
+ * This Factory class helps to initialize FragmentMembersViewModel with application as
+ * parameter (without it, we cannot have application context to create your AppDatabase)
+ *
+ *
+ * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android
+ */
 class FragmentMembersViewModelFactory(val app: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(FragmentMembersViewModel::class.java)) {

@@ -18,9 +18,14 @@ class FragmentPartiesViewModel(application: Application) : AndroidViewModel(appl
         AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
         AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
     )
+    //Introducing livedata for storing party list.
     private var _listedParties = MutableLiveData<List<String>>()
     val listedParties: LiveData<List<String>> = _listedParties
 
+
+    /**
+     * Funtion to get all the members parties of the parliament
+     */
     fun getMemberParty() {
         viewModelScope.launch {
             _listedParties.value = parliamentMemberRepository.getMemberParty()
@@ -30,7 +35,13 @@ class FragmentPartiesViewModel(application: Application) : AndroidViewModel(appl
 
 }
 
-//Introducing a viewModel Factory
+/**
+ * This Factory class helps to initialize FragmentPartiesViewModel with application as
+ * parameter (without it, we cannot have application context to create your AppDatabase)
+ *
+ *
+ * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android
+ */
 class FragmentPartiesViewModelFactory(val app: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(FragmentPartiesViewModel::class.java)) {
