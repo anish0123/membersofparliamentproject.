@@ -22,7 +22,7 @@ class FragmentComment : Fragment() {
     private var _binding: FragmentCommentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: FragmentCommentViewModel
-    private var like: Boolean  = true
+    private var like: Boolean  = false
     private var savedComment: String = ""
     private var commentId: Int = 0
 
@@ -58,9 +58,9 @@ class FragmentComment : Fragment() {
                 if (i.hetekaId == clickedMemberHetekaId) {
                     binding.textViewComment.text = getString(R.string.comment,i.comment)
                     if(i.like) {
-                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
-                    } else {
                         binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
+                    } else {
+                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
                     }
 
                     like = i.like
@@ -69,11 +69,7 @@ class FragmentComment : Fragment() {
                     break
                 }else {
                     binding.textViewComment.text = getString(R.string.comment,"")
-                    if(i.like) {
-                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
-                    } else {
-                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
-                    }
+                    binding.textViewLike.text = getString(R.string.likeOrDislike,"")
                 }
             }
 
