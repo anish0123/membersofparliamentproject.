@@ -15,7 +15,8 @@ class FragmentPartiesViewModel(application: Application) : AndroidViewModel(appl
     //Introducing live data objects for observing
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
-        AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+        AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
+        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
     )
     private var _listedParties = MutableLiveData<List<String>>()
     val listedParties: LiveData<List<String>> = _listedParties

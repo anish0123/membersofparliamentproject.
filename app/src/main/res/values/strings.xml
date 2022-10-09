@@ -12,4 +12,12 @@
     <string name="bornYear">Born Year: %s</string>
     <string name="constituency">Constituency: %s</string>
     <string name="notAvailable">Not Available</string>
+    <string name="comment"><b>Comment: </b>\n %s</string>
+    <string name="likeOrDislike">Like Or Dislike \n %b</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="please_write_comment_here">Please write comment here.</string>
+    <string name="like_or_dislike">Like Or Dislike</string>
+    <string name="like_dislike">Like/Dislike</string>
+    <string name="dislike">Dislike</string>
+    <string name="like">Like</string>
 </resources>

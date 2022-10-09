@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -65,21 +66,25 @@ class FragmentDetail : Fragment() {
             FragmentDetailViewModelFactory(requireActivity().application)
         )[FragmentDetailViewModel::class.java]
         val memberHetekaId = args.clickedMember.hetekaId
-        //Getting all the extraInfo
+         //Getting all the extraInfo
         viewModel.getAllExtraInfo()
+        Log.d("Members", memberHetekaId.toString())
 
         //Observing extraInfos to get extra Info of a member by comparing hetekaId
-        val extraInfoObeserver = Observer<List<ParliamentMembersExtra>> {extraInfo ->
-            for(i in extraInfo) {
+        val extraInfoObserver = Observer<List<ParliamentMembersExtra>> {extra ->
+            Log.d("Members", extra.size.toString())
+            for(i in extra) {
                 if( i.hetekaId == memberHetekaId) {
                     binding.bornYear.text = getString(R.string.bornYear,i.bornYear.toString())
                     binding.constituency.text= getString(R.string.constituency,i.constituency)
                     binding.twitter.text = getString(R.string.twitter,i.twitter)
-
+                    Log.d("Members", "working till here")
+                    break
                 } else {
                     binding.bornYear.text = getString(R.string.bornYear,"Not Available")
                     binding.constituency.text = getString(R.string.constituency,"Not Available")
                     binding.twitter.text = getString(R.string.twitter,"Not Available")
+                    Log.d("Members", "not available")
 
 
                 }
@@ -88,7 +93,13 @@ class FragmentDetail : Fragment() {
         }
 
         //Initialising observer
-        viewModel.extraInfo.observe(viewLifecycleOwner,extraInfoObeserver)
+        viewModel.extraInfo.observe(viewLifecycleOwner,extraInfoObserver)
+
+        //Setting click Listener on comment and like button
+        binding.commentAndLike.setOnClickListener {
+            val action = FragmentDetailDirections.actionFragmentDetailToFragmentComment(memberHetekaId)
+            findNavController().navigate(action)
+        }
     }
 
 

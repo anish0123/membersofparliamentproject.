@@ -23,7 +23,8 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
     // Initialise repository
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
-        AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+        AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
+        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
     )
 
     //Fetching the data from network
@@ -65,6 +66,7 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
 
     fun saveExtraToDatabase() {
         val obtainedExtraList: List<ParliamentMembersExtra>? = _listedExtras.value
+        Log.d(TAG, obtainedExtraList?.size.toString())
         if (obtainedExtraList != null) {
             viewModelScope.launch {
                 parliamentMemberRepository.addAllExtras(obtainedExtraList)
@@ -81,9 +83,6 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
  * This Factory class helps to initialize FragmentStartViewModel with application as
  * parameter (without it, you cannot have application context to create your AppDatabase)
  *
- * Teacher does not have this in exampledbrecycler because he makes his repository has singleton
- * without any parameters. In your project, as you makes your repository to accept
- * ParliamentMemberDao (this Dao needs the application context to create AppDatabase)
  *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android
  */

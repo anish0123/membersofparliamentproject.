@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 
 class ParliamentMemberRepository(
     private val parliamentMembersDao: ParliamentMembersDao,
-    private val parliamentMembersExtraDao: ParliamentMembersExtraDao
+    private val parliamentMembersExtraDao: ParliamentMembersExtraDao,
+    private val parliamentMembersLikeAndCommentDao: ParliamentMembersLikeAndCommentDao
 ) {
 
     val readAllData: LiveData<List<ParliamentMembers>> = parliamentMembersDao.readAllData()
@@ -32,6 +33,15 @@ class ParliamentMemberRepository(
     //This function is called to get extra Info of a selected member
     suspend fun getExtraInfo(hetekaId: Int): ParliamentMembersExtra = parliamentMembersExtraDao.getExtraInfo(hetekaId)
 
+    //Function for getting all the extraInfo about parliament Members
     suspend fun getAllExtraInfo(): List<ParliamentMembersExtra> = parliamentMembersExtraDao.getAllExtraInfo()
+
+    //Function to get all the comments about the parliament Members
+    suspend fun getAllComments(): List<ParliamentMembersLikeAndComment> = parliamentMembersLikeAndCommentDao.getAllComments()
+
+    //function to add comments about the members
+    suspend fun addComment(comment: ParliamentMembersLikeAndComment) = parliamentMembersLikeAndCommentDao.addComment(comment)
+
+    suspend fun updateComment(comment :String, commentId :Int) = parliamentMembersLikeAndCommentDao.updateComment(comment,commentId)
 
 }

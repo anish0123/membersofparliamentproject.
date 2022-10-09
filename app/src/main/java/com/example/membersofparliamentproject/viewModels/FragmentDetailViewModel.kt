@@ -17,17 +17,25 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
     //Initialising repository.
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
-        AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+        AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
+        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
     )
 
     //Introducing live data object
     private var _extraInfo= MutableLiveData<List<ParliamentMembersExtra>>()
     val extraInfo: LiveData<List<ParliamentMembersExtra>> = _extraInfo
+    var _extraInfoById = MutableLiveData<ParliamentMembersExtra>()
 
     //Function to save extraInfo to live data
     fun getAllExtraInfo() {
         viewModelScope.launch {
             _extraInfo.value = parliamentMemberRepository.getAllExtraInfo()
+        }
+    }
+
+    fun getExtraInfo(hetekaId: Int) {
+        viewModelScope.launch {
+            _extraInfoById.value = parliamentMemberRepository.getExtraInfo(hetekaId)
         }
     }
 

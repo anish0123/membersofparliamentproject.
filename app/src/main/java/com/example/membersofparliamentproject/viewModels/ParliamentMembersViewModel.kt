@@ -19,7 +19,8 @@ class ParliamentMembersViewModel(application: Application) : AndroidViewModel(ap
         val parliamentMembersDao = AppDataBase.getDatabase(application).parliamentMembersDao()
         repository = ParliamentMemberRepository(
             AppDataBase.getDatabase(application).parliamentMembersDao(),
-            AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+            AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
+            AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
         )
         readAllData = repository.readAllData
 

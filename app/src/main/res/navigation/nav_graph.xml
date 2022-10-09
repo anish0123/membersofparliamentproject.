@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_fragmentDetail_to_fragmentMembers"
             app:destination="@id/fragmentMembers" />
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragmentComment"
+            app:destination="@id/fragmentComment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentParties2"
@@ -51,5 +54,14 @@
         <action
             android:id="@+id/action_fragmentMembers_to_fragmentParties2"
             app:destination="@id/fragmentParties2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentComment"
+        android:name="com.example.membersofparliamentproject.fragments.FragmentComment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" >
+        <argument
+            android:name="hetekaId"
+            app:argType="integer" />
     </fragment>
 </navigation>

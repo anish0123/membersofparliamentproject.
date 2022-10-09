@@ -3,14 +3,11 @@ package com.example.membersofparliamentproject.database
 import androidx.room.Embedded
 import androidx.room.Relation
 
-/**
- * This data class creates the connection between two tables of the database: ParliamentMembers and ParliamentExtra
- */
-data class ParliamentMembersAndExtra(
+data class ParliamentMembersAndComment(
     @Embedded val parliamentMembers: ParliamentMembers,
     @Relation(
         parentColumn = "hetekaId",
         entityColumn = "hetekaId"
     )
-    val parliamentMembersExtra: ParliamentMembersExtra
+    val parliamentMembersLikeAndComment: ParliamentMembersLikeAndComment
 )

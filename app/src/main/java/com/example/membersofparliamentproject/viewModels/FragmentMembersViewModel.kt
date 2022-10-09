@@ -17,7 +17,8 @@ class FragmentMembersViewModel(application: Application) : AndroidViewModel(appl
     //Initialising repository.
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
-        AppDataBase.getDatabase(application).parliamentMembersExtraDao()
+        AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
+        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
     )
 
     //Initialising variables for storing the party members of clicked party
