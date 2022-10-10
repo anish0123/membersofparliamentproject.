@@ -10,10 +10,8 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 @Entity(tableName = "ParliamentMembers_comment")
-data class ParliamentMembersLikeAndComment(
-    @PrimaryKey(autoGenerate = true)
-    val commentId: Int,
+data class ParliamentMembersComment(
+    @PrimaryKey(autoGenerate = false)
     val comment: String,
-    val like: Boolean,
     val hetekaId: Int
 ) : Parcelable
