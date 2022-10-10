@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 @Entity(tableName = "ParliamentMembers_comment")
-data class ParliamentMembersComment(
+data class ParliamentMembersLikeAndComment(
     @PrimaryKey(autoGenerate = false)
     val comment: String,
     val hetekaId: Int

@@ -96,12 +96,21 @@ class FragmentDetail : Fragment() {
         //Initialising observer
         viewModel.extraInfo.observe(viewLifecycleOwner, extraInfoObserver)
 
-        //Setting click Listener on comment and like button
+        //Setting click Listener on comment button
         binding.commentAndLike.setOnClickListener {
             val action =
                 FragmentDetailDirections.actionFragmentDetailToFragmentComment(memberHetekaId)
             findNavController().navigate(action)
-            Toast.makeText(context, "Moving to Like and Comment Fragment", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "Opening Comment Fragment", Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        //Setting click Listener on Like button
+        binding.likeButton.setOnClickListener {
+            val action =
+                FragmentDetailDirections.actionFragmentDetailToFragmentLike(memberHetekaId)
+            findNavController().navigate(action)
+            Toast.makeText(context, "Opening Like Fragment", Toast.LENGTH_SHORT)
                 .show()
         }
     }

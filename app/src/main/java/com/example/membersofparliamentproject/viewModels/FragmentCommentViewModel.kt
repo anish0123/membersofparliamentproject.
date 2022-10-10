@@ -17,12 +17,16 @@ class FragmentCommentViewModel(application: Application) : AndroidViewModel(appl
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
         AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
-        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
-    )
+        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao(),
+        AppDataBase.getDatabase(application).parliamentMembersLikeDao())
 
     //Introducing livedata object
-    private var _comment = MutableLiveData<List<ParliamentMembersLikeAndComment>>()
-    val comment: LiveData<List<ParliamentMembersLikeAndComment>> = _comment
+    private var _comment = MutableLiveData<List<ParliamentMembersLikeAndComment>?>()
+    val comment: MutableLiveData<List<ParliamentMembersLikeAndComment>?> = _comment
+
+    private var _commentByHetekaId = MutableLiveData<List<ParliamentMembersLikeAndComment>>()
+    val commentByHetekaId: LiveData<List<ParliamentMembersLikeAndComment>> = _commentByHetekaId
+
 
     /**
      * Function to save extraInfo to live data
@@ -43,14 +47,19 @@ class FragmentCommentViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
+
     /**
-     * This function is used for updating old comments.
+     * Function to get comment by hetekaId
      */
-    fun updateComment(comment: String, commentId: Int) {
+
+    fun getCommentByHetekaId(hetekaId: Int) {
         viewModelScope.launch {
-            parliamentMemberRepository.updateComment(comment, commentId)
+            _commentByHetekaId.value = parliamentMemberRepository.getCommentByHetekaId(hetekaId)
         }
     }
+
+
+
 }
 
 /**

@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    android:label="Like Page"
     app:startDestination="@id/fragmentStart3">
 
     <fragment
         android:id="@+id/fragmentDetail"
         android:name="com.example.membersofparliamentproject.fragments.FragmentDetail"
-        android:label="Parliament Members detail"
-        tools:layout="@layout/fragment_detail" >
+        android:label="Member's Detail Fragment"
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="clickedMember"
             app:argType="com.example.membersofparliamentproject.database.ParliamentMembers" />
@@ -19,12 +20,15 @@
         <action
             android:id="@+id/action_fragmentDetail_to_fragmentComment"
             app:destination="@id/fragmentComment" />
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragmentLike"
+            app:destination="@id/fragmentLike" />
     </fragment>
     <fragment
         android:id="@+id/fragmentParties2"
         android:name="com.example.membersofparliamentproject.fragments.FragmentParties"
-        android:label="Parliament Parties"
-        tools:layout="@layout/fragment_parties" >
+        android:label="Parties Fragment"
+        tools:layout="@layout/fragment_parties">
         <action
             android:id="@+id/action_fragmentParties2_to_fragmentMembers2"
             app:destination="@id/fragmentMembers" />
@@ -35,7 +39,7 @@
     <fragment
         android:id="@+id/fragmentStart3"
         android:name="com.example.membersofparliamentproject.fragments.FragmentStart"
-        android:label="Start" >
+        android:label="Start Fragment">
         <action
             android:id="@+id/action_fragmentStart3_to_fragmentParties2"
             app:destination="@id/fragmentParties2" />
@@ -43,8 +47,8 @@
     <fragment
         android:id="@+id/fragmentMembers"
         android:name="com.example.membersofparliamentproject.fragments.FragmentMembers"
-        android:label="Parliament Members"
-        tools:layout="@layout/fragment_members" >
+        android:label="Members Fragment"
+        tools:layout="@layout/fragment_members">
         <action
             android:id="@+id/action_fragmentMembers_to_fragmentDetail"
             app:destination="@id/fragmentDetail" />
@@ -58,7 +62,7 @@
     <fragment
         android:id="@+id/fragmentComment"
         android:name="com.example.membersofparliamentproject.fragments.FragmentComment"
-        android:label="Comment And Like"
+        android:label="Comment Fragment"
         tools:layout="@layout/fragment_comment">
         <argument
             android:name="hetekaId"
@@ -66,5 +70,32 @@
         <action
             android:id="@+id/action_fragmentComment_to_fragmentDetail"
             app:destination="@id/fragmentDetail" />
+        <action
+            android:id="@+id/action_fragmentComment_to_fragmentChangeComment"
+            app:destination="@id/fragmentChangeComment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChangeComment"
+        android:name="com.example.membersofparliamentproject.fragments.FragmentChangeComment"
+        android:label="Update Comment Fragment"
+        tools:layout="@layout/fragment_change_comment">
+        <action
+            android:id="@+id/action_fragmentChangeComment_to_fragmentComment"
+            app:destination="@id/fragmentComment" />
+        <argument
+            android:name="comment"
+            app:argType="com.example.membersofparliamentproject.database.ParliamentMembersLikeAndComment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLike"
+        android:name="com.example.membersofparliamentproject.fragments.FragmentLike"
+        android:label="Like Fragment"
+        tools:layout="@layout/fragment_like">
+        <action
+            android:id="@+id/action_fragmentLike_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+        <argument
+            android:name="hetekaId"
+            app:argType="integer" />
     </fragment>
 </navigation>

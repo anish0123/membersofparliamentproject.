@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
  */
 
 @Database(
-    entities = [ParliamentMembers::class, ParliamentMembersExtra::class, ParliamentMembersLikeAndComment::class],
+    entities = [ParliamentMembers::class, ParliamentMembersExtra::class, ParliamentMembersLikeAndComment::class, ParliamentMembersLike::class],
     version = 1,
     exportSchema = false
 )
@@ -19,6 +19,7 @@ abstract class AppDataBase : RoomDatabase() {
     abstract fun parliamentMembersDao(): ParliamentMembersDao
     abstract fun parliamentMembersExtraDao(): ParliamentMembersExtraDao
     abstract fun parliamentMembersLikeAndCommentDao(): ParliamentMembersLikeAndCommentDao
+    abstract fun parliamentMembersLikeDao(): ParliamentMembersLikeDao
 
     companion object {
 

@@ -15,7 +15,8 @@ class FragmentPartiesViewModel(application: Application) : AndroidViewModel(appl
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
         AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
-        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
+        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao(),
+        AppDataBase.getDatabase(application).parliamentMembersLikeDao()
     )
 
     //Introducing livedata for storing party list.

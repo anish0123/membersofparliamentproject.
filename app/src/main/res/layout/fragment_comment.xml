@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentComment">
 
-    <!--EditText is used for writing and storing the comment in database-->
-    <EditText
-        android:id="@+id/addComment"
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:ems="10"
-        android:hint="@string/please_write_comment_here"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComment"
-        app:layout_constraintVertical_bias="0.037" />
 
     <!--CardView is used to divide the layout to different sections -->
     <androidx.cardview.widget.CardView
@@ -28,93 +16,46 @@
         android:background="@color/FinnishBlue"
         app:cardBackgroundColor="@color/FinnishBlue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dislike"
-        app:layout_constraintVertical_bias="0.609" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!--Button is used for submitting the written comment in editText-->
     <Button
         android:id="@+id/addCommentBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/FinnishBlue"
         android:text="@string/add_comment"
-        android:backgroundTint="@color/FinnishBlue"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addComment"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewComment"
+        app:layout_constraintVertical_bias="0.827" />
 
-    <!--TextView is used for displaying the like status of members-->
-    <TextView
-        android:id="@+id/textViewLike"
+    <!--RecyclerView is used for displaying all the comments for the member -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewComment"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:text="@string/like_or_dislike"
-        android:textSize="25sp"
-        android:textColor="@color/black"
+        android:layout_height="320dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCommentBtn"
-        app:layout_constraintVertical_bias="0.297" />
-
-    <!--Button is used for submitting like for the members-->
-    <Button
-        android:id="@+id/like"
-        android:layout_width="101dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="120dp"
-        android:backgroundTint="@color/FinnishBlue"
-        android:text="@string/like"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.235"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLike"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <!--TextView is used for displaying the given comments to the members-->
-    <TextView
-        android:id="@+id/textViewComment"
-        android:layout_width="403dp"
-        android:layout_height="100dp"
-        android:text="@string/comment"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <!--Button is used for submitting dislike for the members-->
-    <Button
-        android:id="@+id/dislike"
-        android:layout_width="101dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="64dp"
-        android:backgroundTint="@color/FinnishBlue"
-        android:text="@string/dislike"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.986"
-        app:layout_constraintStart_toEndOf="@+id/like"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLike"
-        app:layout_constraintVertical_bias="0.218" />
-
-    <!--CardView is used to divide the layout to different sections -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewBottom"
+    <!--EditText is used for writing and storing the comment in database-->
+    <EditText
+        android:id="@+id/editTextComment"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/FinnishBlue"
-        app:cardBackgroundColor="@color/FinnishBlue"
-        app:layout_constraintBottom_toTopOf="@+id/textViewLike"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/please_write_comment_here"
+        app:layout_constraintBottom_toTopOf="@+id/addCommentBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCommentBtn"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewComment"
+        app:layout_constraintVertical_bias="0.803" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

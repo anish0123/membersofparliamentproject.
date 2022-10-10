@@ -27,7 +27,8 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
         AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
-        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
+        AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao(),
+        AppDataBase.getDatabase(application).parliamentMembersLikeDao()
     )
 
     /**
