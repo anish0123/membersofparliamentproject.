@@ -22,7 +22,9 @@ abstract class AppDataBase : RoomDatabase() {
 
     companion object {
 
-        //Creating an instance of the database
+        /**
+         * Creating an instance of the database
+         */
         @Volatile
         private var INSTANCE: AppDataBase? = null
 

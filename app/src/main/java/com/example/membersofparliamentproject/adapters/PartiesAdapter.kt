@@ -7,6 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.membersofparliamentproject.R
 
+/**
+ * This class is adapter for recyclerView in fragment parties.
+ */
 class PartiesAdapter(private val partiesList: List<String>) :
     RecyclerView.Adapter<PartiesViewHolder>() {
     private lateinit var myListener: OnItemClickListener
@@ -38,6 +41,9 @@ class PartiesAdapter(private val partiesList: List<String>) :
     }
 }
 
+/**
+ * This class is created as a viewHolder in the recyclerView in fragment parties
+ */
 class PartiesViewHolder(itemView: View, listener: PartiesAdapter.OnItemClickListener) :
     RecyclerView.ViewHolder(itemView) {
     val partyHeading: TextView = itemView.findViewById(R.id.item_title)

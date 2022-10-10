@@ -9,6 +9,9 @@ import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembers
 
 
+/**
+ * This class is adapter for recyclerView of fragment members.
+ */
 class MembersAdapter(private val partyMembers: List<ParliamentMembers>) :
     RecyclerView.Adapter<MemberViewHolder>() {
     private lateinit var myListener: OnItemClickListener
@@ -41,6 +44,10 @@ class MembersAdapter(private val partyMembers: List<ParliamentMembers>) :
     }
 
 }
+
+/**
+ * This class is created as a viewholder in the recyclerView in fragment members
+ */
 
 class MemberViewHolder(itemView: View, listener: MembersAdapter.OnItemClickListener) :
     RecyclerView.ViewHolder(itemView) {

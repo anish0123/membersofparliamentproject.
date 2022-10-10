@@ -83,11 +83,10 @@ class FragmentComment : Fragment() {
                     )
                 )
                 Toast.makeText(context,"Comment Added",Toast.LENGTH_SHORT).show()
+                binding.textViewComment.text = getString(R.string.comment, binding.addComment.text)
             } else {
                 Toast.makeText(context,"Unable to add empty comment. Please write some comment.",Toast.LENGTH_SHORT).show()
             }
-
-                binding.textViewComment.text = getString(R.string.comment, binding.addComment.text)
             }
 
         //Adding setOnClickListener for like button
