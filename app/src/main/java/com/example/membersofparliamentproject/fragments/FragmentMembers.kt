@@ -30,7 +30,9 @@ class FragmentMembers : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: FragmentMembersViewModel
 
-
+    /**
+     * It starts the lifecycle of fragment members and inflate the view
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +44,11 @@ class FragmentMembers : Fragment() {
         return view
     }
 
+    /**
+     * It starts after onCreateView and initialise fragmentMembersViewModel.
+     * It also gets list of partyMembers by using observer
+     * It also passes clicked member to fragment Detail
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)

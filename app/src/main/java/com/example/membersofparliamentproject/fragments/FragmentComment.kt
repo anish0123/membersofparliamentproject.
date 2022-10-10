@@ -27,6 +27,9 @@ class FragmentComment : Fragment() {
     private var savedComment: String = ""
     private var commentId: Int = 0
 
+    /**
+     * This function starts the fragment and inflates the view
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +40,10 @@ class FragmentComment : Fragment() {
         return view
     }
 
+    /**
+     * It starts immediately after onCreateView.
+     * It initalise fragmentCommentViewModel and start the observer to get the like and comments about parliament members
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

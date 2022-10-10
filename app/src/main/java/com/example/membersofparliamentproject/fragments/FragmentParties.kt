@@ -28,6 +28,9 @@ class FragmentParties : Fragment() {
     private var _binding: FragmentPartiesBinding? = null
     private val binding get() = _binding!!
 
+    /**
+     * Lifecycle of fragment parties starts over here
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +42,10 @@ class FragmentParties : Fragment() {
         return view
     }
 
+    /**
+     * It starts after onCreateView.
+     * It initialises fragmentPartiesViewModel and gets a list of parties through observer
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)

@@ -29,6 +29,10 @@ class FragmentDetail : Fragment() {
     private lateinit var viewModel: FragmentDetailViewModel
 
 
+    /**
+     * It starts the lifecycle of the fragment detail and inflates the view
+     * It also displays the member basic details
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +55,10 @@ class FragmentDetail : Fragment() {
         return view
     }
 
+    /**
+     * It starts immediately after onViewCreate
+     * It initialise fragmentDetailViewModel and get all extraInfo, save it to observer and start observer to get extra details about member
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Initialising ViewModel

@@ -16,15 +16,24 @@ class MembersAdapter(private val partyMembers: List<ParliamentMembers>) :
     RecyclerView.Adapter<MemberViewHolder>() {
     private lateinit var myListener: OnItemClickListener
 
+    /**
+     * Interface for adding the click listener
+     */
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
 
+    /**
+     * getting the listener
+     */
     fun setonItemClickListener(listener: OnItemClickListener) {
         myListener = listener
 
     }
 
+    /**
+     * Function to create the itemholder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
         val itemView =
             LayoutInflater.from(parent.context)
@@ -32,6 +41,9 @@ class MembersAdapter(private val partyMembers: List<ParliamentMembers>) :
         return MemberViewHolder(itemView, myListener)
     }
 
+    /**
+     * Function for binding the viewHolder
+     */
     override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
         val currentMember = partyMembers[position]
         val firstName = currentMember.firstname
@@ -39,6 +51,9 @@ class MembersAdapter(private val partyMembers: List<ParliamentMembers>) :
         ("$firstName $lastName").toString().also { holder.partyHeading.text = it }
     }
 
+    /**
+     * Function for getting the total item count.
+     */
     override fun getItemCount(): Int {
         return partyMembers.size
     }

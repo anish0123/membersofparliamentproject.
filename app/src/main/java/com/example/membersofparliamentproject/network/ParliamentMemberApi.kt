@@ -25,7 +25,9 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-//Introducing interface for getting JSON data
+/**
+ * Introducing interface for getting JSON data
+ */
 interface ParliamentMemberApiService {
     @GET("seating.json")
     suspend fun getParliamentMembersList(): List<ParliamentMembers>
@@ -34,7 +36,9 @@ interface ParliamentMemberApiService {
     suspend fun getParliamentMembersExtra(): List<ParliamentMembersExtra>
 }
 
-//Starting the connection to get the data
+/**
+ * Starting the connection to get the data
+ */
 object ParliamentMemberApi {
     val retrofitService: ParliamentMemberApiService by lazy {
         retrofit.create(ParliamentMemberApiService::class.java)

@@ -14,13 +14,18 @@ import com.example.membersofparliamentproject.viewModels.FragmentStartViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentStartViewModelFactory
 
 /**
- * This is a HOME fragment (showing intro and fetch data network)
- * 1 viewModel : FragmentStartViewModel (doing network fetching and saving to database)
+ * This is a start fragment (showing intro and fetch data network)
+ *
  */
 class FragmentStart : Fragment() {
     private lateinit var viewModel: FragmentStartViewModel
     private var _binding: FragmentStartBinding? = null
     private val binding get() = _binding!!
+
+    /**
+     * It starts the lifecycle of fragmentStart.
+     * It imports the data from network and save it into the database
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

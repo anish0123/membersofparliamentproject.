@@ -14,15 +14,24 @@ class PartiesAdapter(private val partiesList: List<String>) :
     RecyclerView.Adapter<PartiesViewHolder>() {
     private lateinit var myListener: OnItemClickListener
 
+    /**
+     * Interface for adding the click listener
+     */
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
 
+    /**
+     * getting the listener
+     */
     fun setonItemClickListener(listener: OnItemClickListener) {
         myListener = listener
 
     }
 
+    /**
+     * Function to create the itemholder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartiesViewHolder {
         val itemView =
             LayoutInflater.from(parent.context)
@@ -30,12 +39,18 @@ class PartiesAdapter(private val partiesList: List<String>) :
         return PartiesViewHolder(itemView, myListener)
     }
 
+    /**
+     * Function for binding the viewHolder
+     */
     override fun onBindViewHolder(holder: PartiesViewHolder, position: Int) {
         val currentParty = partiesList[position]
         holder.partyHeading.text = currentParty
 
     }
 
+    /**
+     * Function for getting the total item count.
+     */
     override fun getItemCount(): Int {
         return partiesList.size
     }
