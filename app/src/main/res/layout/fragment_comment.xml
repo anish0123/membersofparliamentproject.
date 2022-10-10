@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--This fragment is for displaying and storing comments and like for parliament members -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentComment">
 
+    <!--EditText is used for writing and storing the comment in database-->
     <EditText
         android:id="@+id/addComment"
         android:layout_width="match_parent"
@@ -18,6 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewComment"
         app:layout_constraintVertical_bias="0.037" />
 
+    <!--CardView is used to divide the layout to different sections -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewTop"
         android:layout_width="match_parent"
@@ -29,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/dislike"
         app:layout_constraintVertical_bias="0.609" />
 
+    <!--Button is used for submitting the written comment in editText-->
     <Button
         android:id="@+id/addCommentBtn"
         android:layout_width="wrap_content"
@@ -41,6 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/addComment"
         app:layout_constraintVertical_bias="0.058" />
 
+    <!--TextView is used for displaying the like status of members-->
     <TextView
         android:id="@+id/textViewLike"
         android:layout_width="match_parent"
@@ -55,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/addCommentBtn"
         app:layout_constraintVertical_bias="0.297" />
 
+    <!--Button is used for submitting like for the members-->
     <Button
         android:id="@+id/like"
         android:layout_width="101dp"
@@ -69,6 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLike"
         app:layout_constraintVertical_bias="0.6" />
 
+    <!--TextView is used for displaying the given comments to the members-->
     <TextView
         android:id="@+id/textViewComment"
         android:layout_width="403dp"
@@ -83,6 +90,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.028" />
 
+    <!--Button is used for submitting dislike for the members-->
     <Button
         android:id="@+id/dislike"
         android:layout_width="101dp"
@@ -97,6 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLike"
         app:layout_constraintVertical_bias="0.218" />
 
+    <!--CardView is used to divide the layout to different sections -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewBottom"
         android:layout_width="match_parent"

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--This fragment is used to display the members of the selected parties -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentMembers">
 
+    <!--RecyclerView is used to display the members -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMembers"
         android:layout_width="match_parent"

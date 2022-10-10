@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--This fragment is the start of the application and gives some basic info about the application -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +8,7 @@
     tools:context=".MainActivity"
     android:id="@+id/container">
 
-
+    <!--ImageView is used to display the eduskunta logo-->
     <ImageView
         android:id="@+id/eduskuntaLogo"
         android:layout_width="380dp"
@@ -21,6 +22,7 @@
         app:layout_constraintVertical_bias="0.176"
         app:srcCompat="@drawable/l" />
 
+    <!--TextView used to display some info about the start button -->
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -35,6 +37,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+    <!--TextView is used to display parlimament of Finland -->
     <TextView
         android:id="@+id/parliamentOfFinland"
         android:layout_width="362dp"
@@ -49,6 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Start button used for take user to parties fragment after the button is clicked -->
     <Button
         android:id="@+id/startBtn"
         android:layout_width="123dp"
