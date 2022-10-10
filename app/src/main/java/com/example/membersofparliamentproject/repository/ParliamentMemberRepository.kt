@@ -1,7 +1,6 @@
-package com.example.membersofparliamentproject.database
+package com.example.membersofparliamentproject.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import com.example.membersofparliamentproject.database.*
 
 class ParliamentMemberRepository(
     private val parliamentMembersDao: ParliamentMembersDao,
@@ -44,27 +43,32 @@ class ParliamentMemberRepository(
     /**
      * This function is called to get extra Info of a selected member
      */
-    suspend fun getExtraInfo(hetekaId: Int): ParliamentMembersExtra = parliamentMembersExtraDao.getExtraInfo(hetekaId)
+    suspend fun getExtraInfo(hetekaId: Int): ParliamentMembersExtra =
+        parliamentMembersExtraDao.getExtraInfo(hetekaId)
 
     /**
      * Function for getting all the extraInfo about parliament Members
      */
-    suspend fun getAllExtraInfo(): List<ParliamentMembersExtra> = parliamentMembersExtraDao.getAllExtraInfo()
+    suspend fun getAllExtraInfo(): List<ParliamentMembersExtra> =
+        parliamentMembersExtraDao.getAllExtraInfo()
 
     /**
      * Function to get all the comments about the parliament Members
      */
-    suspend fun getAllComments(): List<ParliamentMembersLikeAndComment> = parliamentMembersLikeAndCommentDao.getAllComments()
+    suspend fun getAllComments(): List<ParliamentMembersLikeAndComment> =
+        parliamentMembersLikeAndCommentDao.getAllComments()
 
     /**
      * function to add comments about the members
      */
 
-    suspend fun addComment(comment: ParliamentMembersLikeAndComment) = parliamentMembersLikeAndCommentDao.addComment(comment)
+    suspend fun addComment(comment: ParliamentMembersLikeAndComment) =
+        parliamentMembersLikeAndCommentDao.addComment(comment)
 
     /**
      * Function to update comments
      */
-    suspend fun updateComment(comment :String, commentId :Int) = parliamentMembersLikeAndCommentDao.updateComment(comment,commentId)
+    suspend fun updateComment(comment: String, commentId: Int) =
+        parliamentMembersLikeAndCommentDao.updateComment(comment, commentId)
 
 }

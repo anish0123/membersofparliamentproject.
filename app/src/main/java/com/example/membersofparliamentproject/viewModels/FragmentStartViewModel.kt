@@ -5,8 +5,11 @@ import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.membersofparliamentproject.database.*
+import com.example.membersofparliamentproject.database.AppDataBase
+import com.example.membersofparliamentproject.database.ParliamentMembers
+import com.example.membersofparliamentproject.database.ParliamentMembersExtra
 import com.example.membersofparliamentproject.network.ParliamentMemberApi
+import com.example.membersofparliamentproject.repository.ParliamentMemberRepository
 import kotlinx.coroutines.launch
 
 /**

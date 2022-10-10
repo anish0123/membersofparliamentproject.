@@ -1,12 +1,10 @@
 package com.example.membersofparliamentproject.viewModels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.AppDataBase
-import com.example.membersofparliamentproject.database.ParliamentMemberRepository
-import com.example.membersofparliamentproject.database.ParliamentMembers
 import com.example.membersofparliamentproject.database.ParliamentMembersExtra
+import com.example.membersofparliamentproject.repository.ParliamentMemberRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -22,7 +20,7 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
     )
 
     //Introducing live data object
-    private var _extraInfo= MutableLiveData<List<ParliamentMembersExtra>>()
+    private var _extraInfo = MutableLiveData<List<ParliamentMembersExtra>>()
     val extraInfo: LiveData<List<ParliamentMembersExtra>> = _extraInfo
     var _extraInfoById = MutableLiveData<ParliamentMembersExtra>()
 

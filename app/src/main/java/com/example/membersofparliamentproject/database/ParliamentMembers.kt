@@ -1,8 +1,8 @@
 package com.example.membersofparliamentproject.database
 
 import android.os.Parcelable
-import android.view.ViewDebug.CapturedViewProperty
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 /**

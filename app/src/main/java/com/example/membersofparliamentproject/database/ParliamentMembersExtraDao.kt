@@ -1,7 +1,5 @@
 package com.example.membersofparliamentproject.database
 
-import androidx.annotation.IntDef
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

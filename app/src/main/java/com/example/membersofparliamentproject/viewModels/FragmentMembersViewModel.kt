@@ -3,10 +3,8 @@ package com.example.membersofparliamentproject.viewModels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.AppDataBase
-import com.example.membersofparliamentproject.database.ParliamentMemberRepository
 import com.example.membersofparliamentproject.database.ParliamentMembers
-import com.example.membersofparliamentproject.fragments.FragmentMembers
-import kotlinx.coroutines.GlobalScope
+import com.example.membersofparliamentproject.repository.ParliamentMemberRepository
 import kotlinx.coroutines.launch
 
 /**

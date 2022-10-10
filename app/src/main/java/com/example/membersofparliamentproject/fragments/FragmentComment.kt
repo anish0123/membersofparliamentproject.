@@ -1,21 +1,19 @@
 package com.example.membersofparliamentproject.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembersLikeAndComment
 import com.example.membersofparliamentproject.databinding.FragmentCommentBinding
-import com.example.membersofparliamentproject.databinding.FragmentDetailBinding
 import com.example.membersofparliamentproject.viewModels.FragmentCommentViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentCommentViewModelFactory
-import kotlin.properties.Delegates
 
 /**
  * This fragment is used to display and add comments and like to the members.
@@ -25,7 +23,7 @@ class FragmentComment : Fragment() {
     private var _binding: FragmentCommentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: FragmentCommentViewModel
-    private var like: Boolean  = false
+    private var like: Boolean = false
     private var savedComment: String = ""
     private var commentId: Int = 0
 
@@ -49,31 +47,33 @@ class FragmentComment : Fragment() {
         viewModel.getAllComments()
         val clickedMemberHetekaId = args.hetekaId
 
-        val commentObserver = Observer<List<ParliamentMembersLikeAndComment>> {comment ->
-            for ( i in comment) {
+        val commentObserver = Observer<List<ParliamentMembersLikeAndComment>> { comment ->
+            for (i in comment) {
                 if (i.hetekaId == clickedMemberHetekaId) {
-                    binding.textViewComment.text = getString(R.string.comment,i.comment)
-                    if(i.like) {
-                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
+                    binding.textViewComment.text = getString(R.string.comment, i.comment)
+                    if (i.like) {
+                        binding.textViewLike.text =
+                            getString(R.string.likeOrDislike, getString(R.string.like))
                     } else {
-                        binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
+                        binding.textViewLike.text =
+                            getString(R.string.likeOrDislike, getString(R.string.dislike))
                     }
 
                     like = i.like
                     savedComment = i.comment
                     commentId = i.commentId
                     break
-                }else {
-                    binding.textViewComment.text = getString(R.string.comment,"")
-                    binding.textViewLike.text = getString(R.string.likeOrDislike,"")
+                } else {
+                    binding.textViewComment.text = getString(R.string.comment, "")
+                    binding.textViewLike.text = getString(R.string.likeOrDislike, "")
                 }
             }
 
         }
         //Adding setOnClickListener for add comment button to add comments
         binding.addCommentBtn.setOnClickListener {
-                savedComment = binding.addComment.text.toString()
-            if(savedComment != "") {
+            savedComment = binding.addComment.text.toString()
+            if (savedComment != "") {
                 viewModel.addComment(
                     ParliamentMembersLikeAndComment(
                         commentId,
@@ -82,28 +82,32 @@ class FragmentComment : Fragment() {
                         clickedMemberHetekaId
                     )
                 )
-                Toast.makeText(context,"Comment Added",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Comment Added", Toast.LENGTH_SHORT).show()
                 binding.textViewComment.text = getString(R.string.comment, binding.addComment.text)
             } else {
-                Toast.makeText(context,"Unable to add empty comment. Please write some comment.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Unable to add empty comment. Please write some comment.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-            }
+        }
 
         //Adding setOnClickListener for like button
         binding.like.setOnClickListener {
 
-                viewModel.addComment(
-                    ParliamentMembersLikeAndComment(
-                        commentId,
-                        savedComment,
-                        true,
-                        clickedMemberHetekaId
-                    )
+            viewModel.addComment(
+                ParliamentMembersLikeAndComment(
+                    commentId,
+                    savedComment,
+                    true,
+                    clickedMemberHetekaId
                 )
+            )
             like = true
 
-            binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
-            Toast.makeText(context,"Member Liked",Toast.LENGTH_SHORT).show()
+            binding.textViewLike.text = getString(R.string.likeOrDislike, getString(R.string.like))
+            Toast.makeText(context, "Member Liked", Toast.LENGTH_SHORT).show()
         }
 
         //Adding setOnClickListener for dislike button.
@@ -120,11 +124,12 @@ class FragmentComment : Fragment() {
             )
             like = false
 
-            binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
-            Toast.makeText(context,"Member DisLiked",Toast.LENGTH_SHORT).show()
+            binding.textViewLike.text =
+                getString(R.string.likeOrDislike, getString(R.string.dislike))
+            Toast.makeText(context, "Member DisLiked", Toast.LENGTH_SHORT).show()
         }
         //Starting observer for comment
-        viewModel.comment.observe(viewLifecycleOwner,commentObserver)
+        viewModel.comment.observe(viewLifecycleOwner, commentObserver)
 
 
     }

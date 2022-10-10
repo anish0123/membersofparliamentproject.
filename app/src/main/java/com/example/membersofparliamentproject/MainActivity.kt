@@ -1,13 +1,10 @@
 package com.example.membersofparliamentproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.membersofparliamentproject.database.ParliamentMembers
-import com.example.membersofparliamentproject.fragments.FragmentMembers
-import com.example.membersofparliamentproject.fragments.FragmentParties
 
 class MainActivity : AppCompatActivity() {
 

@@ -27,5 +27,5 @@ interface ParliamentMembersLikeAndCommentDao {
      * Function to update comment about a single parliament members.
      */
     @Query("UPDATE ParliamentMembers_comment SET comment = :comment WHERE commentId = :commentId")
-    suspend fun updateComment(comment :String, commentId: Int)
+    suspend fun updateComment(comment: String, commentId: Int)
 }

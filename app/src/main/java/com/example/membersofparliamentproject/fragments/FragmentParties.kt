@@ -1,7 +1,6 @@
 package com.example.membersofparliamentproject.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.membersofparliamentproject.adapters.PartiesAdapter
 import com.example.membersofparliamentproject.R
+import com.example.membersofparliamentproject.adapters.PartiesAdapter
 import com.example.membersofparliamentproject.databinding.FragmentPartiesBinding
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModel
 import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewModelFactory
@@ -63,7 +62,7 @@ class FragmentParties : Fragment() {
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     //Using the nav controller to navigate
                     findNavController().navigate(R.id.action_fragmentParties2_to_fragmentMembers2)
-                    Toast.makeText(context,"$result clicked",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "$result clicked", Toast.LENGTH_SHORT).show()
                 }
 
             })

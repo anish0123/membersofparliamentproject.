@@ -3,17 +3,15 @@ package com.example.membersofparliamentproject.viewModels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.AppDataBase
-import com.example.membersofparliamentproject.database.ParliamentMemberRepository
-import com.example.membersofparliamentproject.database.ParliamentMembersExtra
 import com.example.membersofparliamentproject.database.ParliamentMembersLikeAndComment
-import com.example.membersofparliamentproject.fragments.FragmentComment
+import com.example.membersofparliamentproject.repository.ParliamentMemberRepository
 import kotlinx.coroutines.launch
 
 /**
  * This viewModel all the data that needs to be displayed in fragment Comment
  */
 
-class FragmentCommentViewModel(application: Application) :AndroidViewModel(application) {
+class FragmentCommentViewModel(application: Application) : AndroidViewModel(application) {
 
     //Introducing the repository
     private val parliamentMemberRepository = ParliamentMemberRepository(
@@ -23,7 +21,7 @@ class FragmentCommentViewModel(application: Application) :AndroidViewModel(appli
     )
 
     //Introducing livedata object
-    private var _comment= MutableLiveData<List<ParliamentMembersLikeAndComment>>()
+    private var _comment = MutableLiveData<List<ParliamentMembersLikeAndComment>>()
     val comment: LiveData<List<ParliamentMembersLikeAndComment>> = _comment
 
     /**
@@ -48,9 +46,9 @@ class FragmentCommentViewModel(application: Application) :AndroidViewModel(appli
     /**
      * This function is used for updating old comments.
      */
-    fun updateComment(comment: String, commentId :Int) {
+    fun updateComment(comment: String, commentId: Int) {
         viewModelScope.launch {
-            parliamentMemberRepository.updateComment(comment,commentId)
+            parliamentMemberRepository.updateComment(comment, commentId)
         }
     }
 }

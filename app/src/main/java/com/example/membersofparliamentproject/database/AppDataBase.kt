@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
  */
 
 @Database(
-    entities = [ParliamentMembers::class, ParliamentMembersExtra::class,ParliamentMembersLikeAndComment::class],
+    entities = [ParliamentMembers::class, ParliamentMembersExtra::class, ParliamentMembersLikeAndComment::class],
     version = 1,
     exportSchema = false
 )

@@ -16,4 +16,4 @@ data class ParliamentMembersLikeAndComment(
     val comment: String,
     val like: Boolean,
     val hetekaId: Int
-):Parcelable
+) : Parcelable

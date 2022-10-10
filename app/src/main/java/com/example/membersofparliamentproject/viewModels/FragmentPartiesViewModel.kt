@@ -3,8 +3,7 @@ package com.example.membersofparliamentproject.viewModels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.AppDataBase
-import com.example.membersofparliamentproject.database.ParliamentMemberRepository
-import com.example.membersofparliamentproject.fragments.FragmentParties
+import com.example.membersofparliamentproject.repository.ParliamentMemberRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -18,6 +17,7 @@ class FragmentPartiesViewModel(application: Application) : AndroidViewModel(appl
         AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
         AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao()
     )
+
     //Introducing livedata for storing party list.
     private var _listedParties = MutableLiveData<List<String>>()
     val listedParties: LiveData<List<String>> = _listedParties
