@@ -17,7 +17,9 @@ import com.example.membersofparliamentproject.viewModels.FragmentCommentViewMode
 import com.example.membersofparliamentproject.viewModels.FragmentCommentViewModelFactory
 import kotlin.properties.Delegates
 
-
+/**
+ * This fragment is used to display and add comments and like to the members.
+ */
 class FragmentComment : Fragment() {
     private val args by navArgs<FragmentCommentArgs>()
     private var _binding: FragmentCommentBinding? = null

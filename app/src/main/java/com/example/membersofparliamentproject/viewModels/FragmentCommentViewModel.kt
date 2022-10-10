@@ -58,8 +58,6 @@ class FragmentCommentViewModel(application: Application) :AndroidViewModel(appli
 /**
  * This Factory class helps to initialize FragmentCommentViewModel with application as
  * parameter (without it, we cannot have application context to create your AppDatabase)
- *
- *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android
  */
 class FragmentCommentViewModelFactory(val app: Application) : ViewModelProvider.Factory {
