@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -31,13 +32,6 @@ class FragmentComment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCommentBinding.inflate(inflater, container, false)
-
-
-        binding.addCommentBtn.setOnClickListener {
-            //binding.textViewComment.text = binding.addComment.text
-
-
-        }
         val view = binding.root
         // Inflate the layout for this fragment
         return view
@@ -77,6 +71,7 @@ class FragmentComment : Fragment() {
         //Adding setOnClickListener for add comment button to add comments
         binding.addCommentBtn.setOnClickListener {
                 savedComment = binding.addComment.text.toString()
+            if(savedComment != "") {
                 viewModel.addComment(
                     ParliamentMembersLikeAndComment(
                         commentId,
@@ -85,6 +80,11 @@ class FragmentComment : Fragment() {
                         clickedMemberHetekaId
                     )
                 )
+                Toast.makeText(context,"Comment Added",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context,"Unable to add empty comment. Please write some comment.",Toast.LENGTH_SHORT).show()
+            }
+
                 binding.textViewComment.text = getString(R.string.comment, binding.addComment.text)
             }
 
@@ -102,6 +102,7 @@ class FragmentComment : Fragment() {
             like = true
 
             binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.like))
+            Toast.makeText(context,"Member Liked",Toast.LENGTH_SHORT).show()
         }
 
         //Adding setOnClickListener for dislike button.
@@ -119,6 +120,7 @@ class FragmentComment : Fragment() {
             like = false
 
             binding.textViewLike.text = getString(R.string.likeOrDislike,getString(R.string.dislike))
+            Toast.makeText(context,"Member DisLiked",Toast.LENGTH_SHORT).show()
         }
         //Starting observer for comment
         viewModel.comment.observe(viewLifecycleOwner,commentObserver)

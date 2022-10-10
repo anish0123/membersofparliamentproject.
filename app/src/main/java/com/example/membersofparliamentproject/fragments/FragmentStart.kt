@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.membersofparliamentproject.R
@@ -17,7 +18,6 @@ import com.example.membersofparliamentproject.viewModels.FragmentStartViewModelF
  * 1 viewModel : FragmentStartViewModel (doing network fetching and saving to database)
  */
 class FragmentStart : Fragment() {
-    // - Comments: You should have 1 viewmodel per fragment only.
     private lateinit var viewModel: FragmentStartViewModel
     private var _binding: FragmentStartBinding? = null
     private val binding get() = _binding!!
@@ -42,6 +42,8 @@ class FragmentStart : Fragment() {
         //Using start button to move to fragement where it displays party List
         binding.startBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentStart3_to_fragmentParties2)
+            //Toast added for start Button
+            Toast.makeText(context,"Let's Start", Toast.LENGTH_SHORT).show()
         }
         return view
     }

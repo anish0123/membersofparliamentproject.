@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -60,7 +61,6 @@ class FragmentMembers : Fragment() {
                 clickedParty = result
             }
             //Calling function to get members of selectedParty
-            //TODO("Need a way to get members of selected party, this function is using too much of main thread.")
             viewModel.getMembersByParty(clickedParty)
         }
 
@@ -71,10 +71,12 @@ class FragmentMembers : Fragment() {
             //Adding setOnClickListener so whenever the party is clicked it displays it's members in Fragment Members
             adapter.setonItemClickListener(object : MembersAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
+                    //Passing the clicked member to detail fragment using navController
                     val memberResult = partyMembers[position]
                     val action =
                         FragmentMembersDirections.actionFragmentMembersToFragmentDetail(memberResult)
                     findNavController().navigate(action)
+                    Toast.makeText(context,"${memberResult.firstname} ${memberResult.lastname} clicked",Toast.LENGTH_SHORT).show()
 
                 }
 
