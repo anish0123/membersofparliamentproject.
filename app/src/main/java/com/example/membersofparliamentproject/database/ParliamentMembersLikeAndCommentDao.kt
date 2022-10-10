@@ -5,6 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
+/**
+ * This interface is created to store and get data from database.
+ */
 @Dao
 interface ParliamentMembersLikeAndCommentDao {
 
