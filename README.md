@@ -16,7 +16,7 @@ This personal project was created in my OOP course. It is an stand alone app. Th
 * View likes, dislikes and comments given to members 
 * Add, update and delete comments for each members
 
-** In-app technology
+## In-app technology
 
 This app is built using kotlin and following MVVM software architectural pattern.
 <br>
