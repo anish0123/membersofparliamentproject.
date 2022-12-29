@@ -1,6 +1,7 @@
-    ### Members of Parlimanet Project
+    
+### Members of Parlimanet Project
 
-    This personal project was created in my OOP course. It is an stand alone app. This app lets the users to browse Finnish Parliament parties, view member info, give likes and dislikes, and add review. 
+This personal project was created in my OOP course. It is an stand alone app. This app lets the users to browse Finnish Parliament parties, view member info, give likes and dislikes, and add review. 
 
 ## Tables of Contents
 
