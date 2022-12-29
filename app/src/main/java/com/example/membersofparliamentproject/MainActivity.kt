@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Function for using the back button in the application.
+     * @return Boolean true
      */
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

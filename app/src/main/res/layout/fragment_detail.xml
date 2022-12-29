@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--This fragment is used for displaying the details of the parliament members-->
+<?xml version="1.0" encoding="utf-8"?><!--This fragment is used for displaying the details of the parliament members-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/constraint"
-        xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"

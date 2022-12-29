@@ -1,14 +1,13 @@
 package com.example.membersofparliamentproject.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import com.example.membersofparliamentproject.R
 import com.example.membersofparliamentproject.database.ParliamentMembersLike
@@ -18,6 +17,7 @@ import com.example.membersofparliamentproject.viewModels.FragmentLikeViewModelFa
 
 /**
  * This fragment is for submitting like or dislike to parliament Members
+ * Source for safeArgs: https://medium.com/androiddevelopers/navigating-with-safeargs-bf26c17b1269
  */
 class FragmentLike : Fragment() {
 
@@ -30,13 +30,15 @@ class FragmentLike : Fragment() {
 
     /**
      * This function is called as soon as fragment has started and it inflates it's view
+     * @param inflater and container
+     * @return view
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentLikeBinding.inflate(inflater,container,false)
+        _binding = FragmentLikeBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
@@ -45,6 +47,7 @@ class FragmentLike : Fragment() {
     /**
      * This function is called immediately after onCreateView.
      * IT initialises viewModel and also an observer
+     *  @param view and savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,12 +58,12 @@ class FragmentLike : Fragment() {
         val clickedMemberHetekaId = args.hetekaId
         viewModel.getAllLike()
 
-        val likeObserver = Observer<List<ParliamentMembersLike>> {like ->
-            for( i in like) {
-                if ( i.hetekaId == clickedMemberHetekaId) {
-                    if(i.like) {
+        val likeObserver = Observer<List<ParliamentMembersLike>> { like ->
+            for (i in like) {
+                if (i.hetekaId == clickedMemberHetekaId) {
+                    if (i.like) {
                         binding.likeView.setBackgroundResource(R.drawable.like)
-                    }else {
+                    } else {
                         binding.likeView.setBackgroundResource(R.drawable.dislike)
                     }
                 }
@@ -68,20 +71,20 @@ class FragmentLike : Fragment() {
 
         }
         //Starting observer
-        viewModel.like.observe(viewLifecycleOwner,likeObserver)
+        viewModel.like.observe(viewLifecycleOwner, likeObserver)
 
         //Adding click listener for like Button
         binding.likeBtn.setOnClickListener {
-            viewModel.addLike(ParliamentMembersLike(true,clickedMemberHetekaId))
+            viewModel.addLike(ParliamentMembersLike(true, clickedMemberHetekaId))
             binding.likeView.setBackgroundResource(R.drawable.like)
-            Toast.makeText(context,"Liked!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Liked!", Toast.LENGTH_SHORT).show()
         }
 
         //Adding click listener for dislike button.
         binding.disLikeBtn.setOnClickListener {
-            viewModel.addLike(ParliamentMembersLike(false,clickedMemberHetekaId))
+            viewModel.addLike(ParliamentMembersLike(false, clickedMemberHetekaId))
             binding.likeView.setBackgroundResource(R.drawable.dislike)
-            Toast.makeText(context,"Disliked!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Disliked!", Toast.LENGTH_SHORT).show()
         }
 
     }

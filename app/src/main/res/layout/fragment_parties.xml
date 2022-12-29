@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--Thie fragment is used to display the parties of the parliament -->
+<?xml version="1.0" encoding="utf-8"?><!--Thie fragment is used to display the parties of the parliament -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,5 +10,5 @@
         android:id="@+id/recyclerViewParty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_view"/>
+        tools:listitem="@layout/item_view" />
 </FrameLayout>

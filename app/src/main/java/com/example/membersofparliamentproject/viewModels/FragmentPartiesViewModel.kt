@@ -38,7 +38,7 @@ class FragmentPartiesViewModel(application: Application) : AndroidViewModel(appl
 
 /**
  * This Factory class helps to initialize FragmentPartiesViewModel with application as
- * parameter (without it, we cannot have application context to create your AppDatabase)
+ * parameter (without it, we cannot have application context to create our AppDatabase)
  *
  *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android

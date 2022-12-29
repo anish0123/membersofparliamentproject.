@@ -1,7 +1,6 @@
 package com.example.membersofparliamentproject.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,20 +19,21 @@ import com.example.membersofparliamentproject.viewModels.FragmentCommentViewMode
 
 /**
  * This fragment is used to display and add comments and like to the members.
+ * Source for RecyclerView: https://developer.android.com/develop/ui/views/layout/recyclerview
+ * Source for safeArgs: https://medium.com/androiddevelopers/navigating-with-safeargs-bf26c17b1269
  */
 class FragmentComment : Fragment() {
     private val args by navArgs<FragmentCommentArgs>()
     private var _binding: FragmentCommentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: FragmentCommentViewModel
-    private var like: Boolean = false
-    private var savedComment: String = ""
-    private var commentId: Int = 0
     private lateinit var adapter: CommentAdapter
-    private lateinit var selectedComment: MutableList<ParliamentMembersLikeAndComment>
+
 
     /**
      * This function starts the fragment and inflates the view
+     * @param inflater and container
+     * @return view
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +48,7 @@ class FragmentComment : Fragment() {
     /**
      * It starts immediately after onCreateView.
      * It initalise fragmentCommentViewModel and start the observer to get the like and comments about parliament members
+     *  @param view and savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,12 +69,15 @@ class FragmentComment : Fragment() {
         val commentObserver = Observer<List<ParliamentMembersLikeAndComment>> { comment ->
             adapter = CommentAdapter(comment)
             binding.recyclerViewComment.adapter = adapter
-            adapter.setonItemClickListener(object :CommentAdapter.OnItemClickListener{
+            adapter.setonItemClickListener(object : CommentAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
                     val clickedComment = comment[position]
-                    val action = FragmentCommentDirections.actionFragmentCommentToFragmentChangeComment(clickedComment)
+                    val action =
+                        FragmentCommentDirections.actionFragmentCommentToFragmentChangeComment(
+                            clickedComment
+                        )
                     findNavController().navigate(action)
-                    Toast.makeText(context,"Opening Comment Edit Page",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Opening Comment Edit Page", Toast.LENGTH_SHORT).show()
                 }
             })
         }
@@ -83,26 +87,26 @@ class FragmentComment : Fragment() {
         //adding clickListener for adding comment
         binding.addCommentBtn.setOnClickListener {
             val newComment = binding.editTextComment.text.toString()
-            if(newComment != "") {
+            if (newComment != "") {
                 viewModel.addComment(
                     ParliamentMembersLikeAndComment(
-                        newComment.toString(),
+                        newComment,
                         clickedMemberHetekaId
                     )
                 )
+                //Updating the recyclerView.
                 viewModel.getCommentByHetekaId(clickedMemberHetekaId)
                 //viewModel.commentByHetekaId.observe(viewLifecycleOwner, commentObserver)
                 binding.editTextComment.setText("")
-                Toast.makeText(context,"Comment Submitted",Toast.LENGTH_SHORT).show()
-            }else {
-                Toast.makeText(context,"Unable to submit empty comment. Please write comment", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Comment Submitted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    context,
+                    "Unable to submit empty comment. Please write comment",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
-
-
-
-
-
 
 
     }

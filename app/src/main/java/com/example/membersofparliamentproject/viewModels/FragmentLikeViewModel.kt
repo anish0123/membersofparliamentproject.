@@ -4,14 +4,13 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.membersofparliamentproject.database.AppDataBase
 import com.example.membersofparliamentproject.database.ParliamentMembersLike
-import com.example.membersofparliamentproject.database.ParliamentMembersLikeDao
 import com.example.membersofparliamentproject.repository.ParliamentMemberRepository
 import kotlinx.coroutines.launch
 
 /**
  * This is the viewModel for Fragment Like
  */
-class FragmentLikeViewModel(application: Application): AndroidViewModel(application) {
+class FragmentLikeViewModel(application: Application) : AndroidViewModel(application) {
 
     //Initialising repository.
     private val parliamentMemberRepository = ParliamentMemberRepository(
@@ -23,7 +22,7 @@ class FragmentLikeViewModel(application: Application): AndroidViewModel(applicat
 
     //Introducing liveData object
     private var _like = MutableLiveData<List<ParliamentMembersLike>>()
-    val like : LiveData<List<ParliamentMembersLike>> = _like
+    val like: LiveData<List<ParliamentMembersLike>> = _like
 
     /**
      * Function to get all likes/dislikes from database
@@ -36,6 +35,7 @@ class FragmentLikeViewModel(application: Application): AndroidViewModel(applicat
 
     /**
      * Function to add like/dislike to a member
+     * @param like like/dislike to the member
      */
 
     fun addLike(like: ParliamentMembersLike) {
@@ -46,6 +46,7 @@ class FragmentLikeViewModel(application: Application): AndroidViewModel(applicat
 
     /**
      * Function to delete like/dislike to a members
+     * @param like like/dislike to the member
      */
     fun deleteLike(like: ParliamentMembersLike) {
         viewModelScope.launch {
@@ -53,9 +54,10 @@ class FragmentLikeViewModel(application: Application): AndroidViewModel(applicat
         }
     }
 }
+
 /**
  * This Factory class helps to initialize FragmentLikeViewModel with application as
- * parameter (without it, we cannot have application context to create your AppDatabase)
+ * parameter (without it, we cannot have application context to create our AppDatabase)
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android
  */
 class FragmentLikeViewModelFactory(val app: Application) : ViewModelProvider.Factory {

@@ -20,6 +20,7 @@ import com.example.membersofparliamentproject.viewModels.FragmentPartiesViewMode
 
 /**
  * This is Party Fragment which displays party lists on recyclerView
+ * Source: https://developer.android.com/develop/ui/views/layout/recyclerview
  */
 
 class FragmentParties : Fragment() {
@@ -30,6 +31,8 @@ class FragmentParties : Fragment() {
 
     /**
      * Lifecycle of fragment parties starts over here
+     * @param inflater and container
+     * @return view
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,7 @@ class FragmentParties : Fragment() {
     /**
      * It starts after onCreateView.
      * It initialises fragmentPartiesViewModel and gets a list of parties through observer
+     *  @param view and savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

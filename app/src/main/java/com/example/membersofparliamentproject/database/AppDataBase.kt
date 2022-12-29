@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
- * This is the database class.
+ * This class is for creating database and storing the details of database.
  */
 
 @Database(

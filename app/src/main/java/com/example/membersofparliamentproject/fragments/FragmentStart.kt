@@ -25,6 +25,8 @@ class FragmentStart : Fragment() {
     /**
      * It starts the lifecycle of fragmentStart.
      * It imports the data from network and save it into the database
+     * @param inflater and container
+     * @return view
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

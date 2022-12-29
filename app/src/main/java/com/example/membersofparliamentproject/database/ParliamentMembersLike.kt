@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
- * This data class holds data for storing like for members of parliament
+ * This data class holds data for storing like/dislike for members of parliament
  */
 @Entity(tableName = "ParliamentMembersLike_table")
 data class ParliamentMembersLike(
@@ -14,5 +14,5 @@ data class ParliamentMembersLike(
     val hetekaId: Int
 
 ) {
-    constructor(like :Boolean, hetekaId: Int) : this(0,like,hetekaId)
+    constructor(like: Boolean, hetekaId: Int) : this(0, like, hetekaId)
 }

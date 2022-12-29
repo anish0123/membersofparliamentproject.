@@ -37,6 +37,7 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
 
     /**
      * Funtion to get extraInfo according to hetekaId
+     * @param hetekaId Id of the member
      */
     fun getExtraInfo(hetekaId: Int) {
         viewModelScope.launch {
@@ -49,7 +50,7 @@ class FragmentDetailViewModel(application: Application) : AndroidViewModel(appli
 
 /**
  * This Factory class helps to initialize FragmentDetailViewModel with application as
- * parameter (without it, we cannot have application context to create your AppDatabase)
+ * parameter (without it, we cannot have application context to create our AppDatabase)
  *
  *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android

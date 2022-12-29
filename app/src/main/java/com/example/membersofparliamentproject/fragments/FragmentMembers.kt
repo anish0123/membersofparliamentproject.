@@ -20,6 +20,7 @@ import com.example.membersofparliamentproject.viewModels.FragmentMembersViewMode
 
 /**
  * This Fragment is used to display list of party members in a recyclerView.
+ * Source: https://developer.android.com/develop/ui/views/layout/recyclerview
  *
  */
 
@@ -32,6 +33,8 @@ class FragmentMembers : Fragment() {
 
     /**
      * It starts the lifecycle of fragment members and inflate the view
+     * @param inflater and container
+     * @return view
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +51,7 @@ class FragmentMembers : Fragment() {
      * It starts after onCreateView and initialise fragmentMembersViewModel.
      * It also gets list of partyMembers by using observer
      * It also passes clicked member to fragment Detail
+     *  @param view and savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 /**
- * This class is created to create a table in database for storing like and comment of parliament member
+ * This class is created to create a table in database for storing  comment of parliament member
  */
 @Parcelize
 @Entity(tableName = "ParliamentMembers_comment")

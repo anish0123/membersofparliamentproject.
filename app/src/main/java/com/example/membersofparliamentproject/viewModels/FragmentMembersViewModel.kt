@@ -27,6 +27,7 @@ class FragmentMembersViewModel(application: Application) : AndroidViewModel(appl
 
     /**
      * Introducing function for getting party members of clicked party.
+     * @param party name of the party
      */
     fun getMembersByParty(party: String) {
         viewModelScope.launch {
@@ -39,7 +40,7 @@ class FragmentMembersViewModel(application: Application) : AndroidViewModel(appl
 
 /**
  * This Factory class helps to initialize FragmentMembersViewModel with application as
- * parameter (without it, we cannot have application context to create your AppDatabase)
+ * parameter (without it, we cannot have application context to create our AppDatabase)
  *
  *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android

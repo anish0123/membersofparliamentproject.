@@ -14,18 +14,20 @@ import kotlinx.coroutines.launch
 /**
  * This is the viewModel for fragment changeComment
  */
-class FragmentChangeCommentViewModel(application: Application): AndroidViewModel(application) {
+class FragmentChangeCommentViewModel(application: Application) : AndroidViewModel(application) {
 
     //Initialising repository.
     private val parliamentMemberRepository = ParliamentMemberRepository(
         AppDataBase.getDatabase(application).parliamentMembersDao(),
         AppDataBase.getDatabase(application).parliamentMembersExtraDao(),
         AppDataBase.getDatabase(application).parliamentMembersLikeAndCommentDao(),
-        AppDataBase.getDatabase(application).parliamentMembersLikeDao())
+        AppDataBase.getDatabase(application).parliamentMembersLikeDao()
+    )
 
 
     /**
      * Function to delete comment
+     * @param comment that needs to be deleted
      */
     fun deleteComment(comment: ParliamentMembersLikeAndComment) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -35,6 +37,7 @@ class FragmentChangeCommentViewModel(application: Application): AndroidViewModel
 
     /**
      * Function to add comment
+     * @param comment that needs to be added
      */
     fun addComment(comment: ParliamentMembersLikeAndComment) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -43,13 +46,11 @@ class FragmentChangeCommentViewModel(application: Application): AndroidViewModel
     }
 
 
-
-
 }
 
 /**
  * This Factory class helps to initialize FragmentChangeComment with application as
- * parameter (without it, we cannot have application context to create your AppDatabase)
+ * parameter (without it, we cannot have application context to create our AppDatabase)
  *
  *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android

@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
  */
 class FragmentStartViewModel(application: Application) : AndroidViewModel(application) {
 
+    //Introducing liveData for storing data.
     private val _listedMembers = MutableLiveData<List<ParliamentMembers>>()
     val listMembers: LiveData<List<ParliamentMembers>> = _listedMembers
 
@@ -97,7 +98,7 @@ class FragmentStartViewModel(application: Application) : AndroidViewModel(applic
 
 /**
  * This Factory class helps to initialize FragmentStartViewModel with application as
- * parameter (without it, you cannot have application context to create your AppDatabase)
+ * parameter (without it, you cannot have application context to create our AppDatabase)
  *
  *
  * Source: https://stackoverflow.com/questions/54419236/why-a-viewmodel-factory-is-needed-in-android

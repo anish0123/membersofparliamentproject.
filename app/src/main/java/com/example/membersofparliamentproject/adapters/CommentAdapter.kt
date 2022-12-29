@@ -12,7 +12,7 @@ import com.example.membersofparliamentproject.database.ParliamentMembersLikeAndC
  * This class is the adapter for recyclerView in the comment fragment.
  */
 class CommentAdapter(private val commentList: List<ParliamentMembersLikeAndComment>) :
-RecyclerView.Adapter<CommentViewHolder>(){
+    RecyclerView.Adapter<CommentViewHolder>() {
     private lateinit var myListener: OnItemClickListener
 
     /**
@@ -39,8 +39,6 @@ RecyclerView.Adapter<CommentViewHolder>(){
                 .inflate(R.layout.item_view, parent, false)
         return CommentViewHolder(itemView, myListener)
     }
-
-
 
 
     /**

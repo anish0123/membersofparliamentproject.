@@ -20,6 +20,7 @@ import com.example.membersofparliamentproject.viewModels.FragmentDetailViewModel
 
 /**
  * This fragment is used to display the details of parliament members
+ * Source for safeArgs: https://medium.com/androiddevelopers/navigating-with-safeargs-bf26c17b1269
  */
 
 class FragmentDetail : Fragment() {
@@ -32,6 +33,8 @@ class FragmentDetail : Fragment() {
     /**
      * It starts the lifecycle of the fragment detail and inflates the view
      * It also displays the member basic details
+     * @param inflater and container
+     * @return view
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +61,7 @@ class FragmentDetail : Fragment() {
     /**
      * It starts immediately after onViewCreate
      * It initialise fragmentDetailViewModel and get all extraInfo, save it to observer and start observer to get extra details about member
+     *  @param view and savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

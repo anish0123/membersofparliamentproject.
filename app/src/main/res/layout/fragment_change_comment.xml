@@ -22,7 +22,6 @@
         app:layout_constraintVertical_bias="0.065" />
 
 
-
     <!--Button for deleting comment -->
     <Button
         android:id="@+id/updateBtn"
