@@ -28,4 +28,4 @@ Components used in this app:
 2. Network: Retrofit, Moshi to get JSON data from network and convert to object.
 
 ## App Demo Video:
-[![Members of Parliament App Demo](/uploads/7964d7e09ac510d28f22ed68e3eff582/mainpage.png)](https://www.youtube.com/watch?v=bFu037ZV8Q8&ab_channel=AnishMaharjan)
+[![Members of Parliament App Demo](https://gitlab.metropolia.fi/anishm/membersofparliamentproject/uploads/7964d7e09ac510d28f22ed68e3eff582/mainpage.png)](https://www.youtube.com/watch?v=bFu037ZV8Q8&ab_channel=AnishMaharjan)
